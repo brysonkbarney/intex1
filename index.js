@@ -26,7 +26,7 @@ app.get("/login", (req, res) => {
 //Get request for the add data survey page
 app.get("/addData", (req, res) => {
     res.render("addData"); // This will render the login.ejs file
-  });
+});
   
 
 app.listen(port, () => console.log('Server is Listening')); //last line!!
