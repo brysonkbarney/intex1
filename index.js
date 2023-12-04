@@ -23,6 +23,19 @@ app.get('/login', (req, res) => {
 //Get Request for creating an account in our login page.
 //add account user name and password to our account table 
 
-  
+// Get request for the add Data Page
+app.get('/addData', (req, res) => {
+    res.render('addData'); // This will render the index.ejs file
+});
+
+// Get request for the view all data page.
+app.get('/viewData', (req, res) => {
+    res.render('viewData'); // This will render the index.ejs file
+});
+
+// Get request for the Tableau Dashboard
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard'); // This will render the index.ejs file
+});
 
 app.listen(port, () => console.log('Server is Listening')); //last line!!
