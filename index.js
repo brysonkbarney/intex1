@@ -30,11 +30,10 @@ app.get("/", (req, res) => {
 app.post("/storeLogin", (req, res) => {
   const { username, password } = req.body;
 
-  // Assuming you have a column named "password" in your "login" table
   knex("login")
     .insert({
       userName: username,
-      password: password, // Replace this with the actual name of your password field
+      password: password,
     })
     .then(() => {
       res.redirect("/");
