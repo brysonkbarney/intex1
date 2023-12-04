@@ -27,6 +27,15 @@ app.get("/login", (req, res) => {
 app.get("/addData", (req, res) => {
     res.render("addData"); // This will render the login.ejs file
 });
-  
 
+//Get request for the view all data page
+app.get("/viewData", (req, res) => {
+    res.render("viewData"); // This will render the login.ejs file
+});
+
+//Get request for the dashboard
+app.get("/dashboard", (req, res) => {
+    res.render("dashboard"); // This will render the login.ejs file
+});
+  
 app.listen(port, () => console.log('Server is Listening')); //last line!!
