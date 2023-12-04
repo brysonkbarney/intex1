@@ -18,7 +18,7 @@ const knex = require("knex")({
     password: process.env.RDS_PASSWORD,
     database: process.env.RDS_DB_NAME,
     port: process.env.RDS_PORT || 5432,
-    ssl: process.env.DB ? { rejectUnauthorized: false } : false,
+    ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false,
   }, //a dictionary (keys and values)
 }); //parameters go in the ({})
 
