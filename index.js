@@ -29,14 +29,17 @@ app.get("/", (req, res) => {
 
 //Get request for the login page
 app.get("/login", (req, res) => {
-    knex.select('username', 'password').from('login').then(login => {
-        res.render('login', {allLogins: login});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json({err});
+  knex
+    .select()
+    .from("login")
+    .then((login) => {
+      res.render("login.ejs", { allLogins: login });
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
 });
-
 
 //Get Request for creating an account in our login page.
 //add account user name and password to our account table
