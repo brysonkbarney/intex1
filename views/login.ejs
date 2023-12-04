@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Welcome to our login Page!</h1>
     <form action="/storeLogin" method="post">
         <h2>Login</h2>
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
-        
+
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br>
         <br><br>
@@ -23,6 +25,7 @@
         </div>
     </form>
     <br>
+
     <body>
         <table>
             <thead>
@@ -32,13 +35,18 @@
                 </tr>
             </thead>
             <tbody>
-                <% for (let iCount = 0; iCount < allLogins.length; iCount++) { %>
+                <% for (let iCount=0; iCount < allLogins.length; iCount++) { %>
                     <tr>
-                        <td><%= allLogins[iCount].username %></td>
-                        <td><%= allLogins[iCount].password %></td>
+                        <td>
+                            <%= allLogins[iCount].userName %>
+                        </td>
+                        <td>
+                            <%= allLogins[iCount].password %>
+                        </td>
                     </tr>
-                <% } %>
+                    <% } %>
             </tbody>
         </table>
-</body>
+    </body>
+
 </html>
