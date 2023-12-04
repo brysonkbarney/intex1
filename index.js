@@ -10,6 +10,18 @@ app.set("view engine", "ejs"); //using ejs for our files.
 
 app.use(express.urlencoded({ extended: true }));
 
+const knex = require("knex")({
+  client: "pg",
+  connection: {
+    host: process.env.RDS_HOSTNAME || "localhost",
+    user: process.env.RDS_USERNAME || "postgres",
+    password: process.env.RDS_PASSWORD || "admin",
+    database: process.env.RDS_DB_NAME || "activity_app",
+    port: process.env.RDS_PORT || 5432,
+    ssl: process.env.DB ? { rejectUnauthorized: false } : false,
+  }, //a dictionary (keys and values)
+}); //parameters go in the ({})
+
 // Get request for the landing page
 app.get("/", (req, res) => {
   res.render("index"); // This will render the index.ejs file
@@ -25,17 +37,17 @@ app.get("/login", (req, res) => {
 
 //Get request for the add data survey page
 app.get("/addData", (req, res) => {
-    res.render("addData"); // This will render the login.ejs file
+  res.render("addData"); // This will render the login.ejs file
 });
 
 //Get request for the view all data page
 app.get("/viewData", (req, res) => {
-    res.render("viewData"); // This will render the login.ejs file
+  res.render("viewData"); // This will render the login.ejs file
 });
 
 //Get request for the dashboard
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard"); // This will render the login.ejs file
+  res.render("dashboard"); // This will render the login.ejs file
 });
-  
-app.listen(port, () => console.log('Server is Listening')); //last line!!
+
+app.listen(port, () => console.log("Server is Listening")); //last line!!
