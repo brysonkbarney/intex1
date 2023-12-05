@@ -168,48 +168,12 @@
     </form> 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var rowsToShow = 10;
-            var table = document.getElementById('userTable');
+        function toggleRows() {
             var tbody = document.getElementById('userTableBody');
-            var button = document.getElementById('toggleButton');
-            var shownRowsCount = rowsToShow;
-
-            function toggleRows() {
-                // Toggle the class to show/hide rows
-                tbody.classList.toggle('hidden-rows');
-
-                // Change the button text based on the current state
-                if (tbody.classList.contains('hidden-rows')) {
-                    button.innerText = 'Show All Rows';
-                } else {
-                    button.innerText = 'Hide Rows';
-                }
-
-                // Show additional rows if expanding
-                if (!tbody.classList.contains('hidden-rows')) {
-                    for (var i = shownRowsCount; i < Math.min(shownRowsCount + rowsToShow, mydata.length); i++) {
-                        var row = table.rows[i];
-                        if (row) {
-                            row.style.display = 'table-row';
-                        }
-                    }
-                    shownRowsCount += rowsToShow;
-                } else {
-                    // Hide all rows if collapsing
-                    for (var i = shownRowsCount; i < table.rows.length; i++) {
-                        var row = table.rows[i];
-                        if (row) {
-                            row.style.display = 'none';
-                        }
-                    }
-                    shownRowsCount = rowsToShow;
-                }
-            }
-
-            // Initial setup to show only 10 rows
-            toggleRows();
-        });
+            
+            // Toggle the class to show/hide rows
+            tbody.classList.toggle('hidden-rows');
+        }
     </script>
 
 </body>
