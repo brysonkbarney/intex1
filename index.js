@@ -99,4 +99,13 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard"); // This will render the login.ejs file
 });
 
+app.get('/viewData', (req, res) =>{
+  knex.select('userID', 'timestamp', 'age', 'gender', 'relationshipStatus', 'occupationStatus', 'socialMediaUsage', 'avgDailyTime', 'purpose', 'distracted', 'restless', 'easilyDistracted', 'worried', 'concentration', 'comparison', 'comparisonFeelings', 'validation', 'depression', 'interests', 'sleep', 'location').from('user').then(user => {
+      res.render('viewData', {mydata: user});
+  }).catch(err => {
+      console.log(err);
+      res.status(500).json({err});
+  })
+})
+
 app.listen(port, () => console.log("Server is Listening")); //last line!!
