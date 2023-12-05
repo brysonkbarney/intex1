@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
   res.render("index"); // This will render the index.ejs file
 });
 
+//adding users to the data table
 app.post("/storeLogin", (req, res) => {
   const { username, password } = req.body;
 
@@ -46,6 +47,7 @@ app.post("/storeLogin", (req, res) => {
     });
 });
 
+//searching the table for matches
 app.post("/findLogin", (req, res) => {
   knex
     .select("userName", "password")
@@ -90,6 +92,10 @@ app.get("/login", (req, res) => {
 app.get("/addData", (req, res) => {
   res.render("addData"); // This will render the addData.ejs file
 });
+
+app.get("/create", (req, res) => {
+    res.render("create"); // This will render the addData.ejs file
+  });
 
 const organizationMapping = {
   University: 1,
