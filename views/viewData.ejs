@@ -168,11 +168,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var rowsToShow = 10;
+            var rowsToShow = 11;
             var table = document.getElementById('userTable');
             var tbody = document.getElementById('userTableBody');
             var button = document.getElementById('toggleButton');
-            var shownRowsCount = 0;
+            var shownRowsCount = rowsToShow;
 
             function toggleRows() {
                 // Toggle the class to show/hide rows
@@ -186,30 +186,16 @@
                 }
 
                 // Show additional rows if expanding
-                if (!tbody.classList.contains('hidden-rows')) {
-                    for (var i = shownRowsCount; i < shownRowsCount + rowsToShow; i++) {
-                        var row = table.rows[i];
-                        if (row) {
-                            row.style.display = 'table-row';
-                        }
-                    }
-                    shownRowsCount += rowsToShow;
-                } else {
-                    // Hide all rows if collapsing
-                    for (var i = shownRowsCount; i < table.rows.length; i++) {
-                        var row = table.rows[i];
-                        if (row) {
-                            row.style.display = 'none';
-                        }
+                for (var i = shownRowsCount; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    if (row) {
+                        row.style.display = tbody.classList.contains('hidden-rows') ? 'none' : 'table-row';
                     }
                 }
             }
 
             // Initial setup to show only 10 rows
             toggleRows();
-
-            // Attach the toggleRows function to the button click event
-            button.addEventListener('click', toggleRows);
         });
     </script>       
 
