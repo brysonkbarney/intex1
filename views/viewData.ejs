@@ -9,7 +9,7 @@
 <body>
     <h1>View all the data here!</h1>
   
-    <label><b>Country Information:</b></label>
+    <label><b>User Table:</b></label>
     <br><br>
     <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
         <thead style="background-color: cornflowerblue; color: white;">
@@ -38,32 +38,33 @@
         </tr>
         </thead>
         <tbody style="font-family: Arial; font-size: 9pt;">
-        <% for (let iCount = 0; iCount < mycountry.length; iCount++) { %>
+        <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
             <tr>
-            <td><%= mycountry[iCount].country_name %></td>
-            <td><%= mycountry[iCount].popular_site %></td>
-            <td><%= mycountry[iCount].capital %></td>
-            <td><%= mycountry[iCount].population %></td>
-            <td style="text-align: center;"><%= mycountry[iCount].visited %></td>
-            <td style="text-align: center;"><%= mycountry[iCount].covid_level %></td>
-            <td style="text-align: center;">
-                <form action="/editCountry/<%= mycountry[iCount].country_id %>" method="GET">
-                <button type="submit">Edit</button>
-                </form>
-            </td>
-            <td style="text-align: center;">
-                <form action="/deleteCountry/<%= mycountry[iCount].country_id %>" method="POST">
-                <button type="submit">Delete</button>
-                </form>
-            </td>
+            <td><%= mydata[iCount].userID %></td>
+            <td><%= mydata[iCount].timestamp %></td>
+            <td><%= mydata[iCount].age %></td>
+            <td><%= mydata[iCount].gender %></td>
+            <td><%= mydata[iCount].relationshipStatus %></td>
+            <td><%= mydata[iCount].occupationStatus %></td>
+            <td><%= mydata[iCount].socialMediaUsage %></td>
+            <td><%= mydata[iCount].avgDailyTime %></td>
+            <td><%= mydata[iCount].purpose %></td>
+            <td><%= mydata[iCount].distracted %></td>
+            <td><%= mydata[iCount].restless %></td>
+            <td><%= mydata[iCount].easilyDistracted %></td>
+            <td><%= mydata[iCount].worried %></td>
+            <td><%= mydata[iCount].concentration %></td>
+            <td><%= mydata[iCount].comparison %></td>
+            <td><%= mydata[iCount].comparisonFeelings %></td>
+            <td><%= mydata[iCount].validation %></td>
+            <td><%= mydata[iCount].depression %></td>
+            <td><%= mydata[iCount].interests %></td>
+            <td><%= mydata[iCount].sleep %></td>
+            <td><%= mydata[iCount].location %></td>
             </tr>
         <% } %>
         </tbody>
     </table>
-    <br><br>
-    <form action="/addCountry" method="GET">
-        <button type="submit">Add Country</button>
-    </form>
 
 </body>
 </html>
