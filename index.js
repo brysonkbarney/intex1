@@ -66,7 +66,6 @@ app.post("/findLogin", (req, res) => {
         });    
 });
 
-
 //Get request for the login page
 app.get("/login", (req, res) => {
   knex
