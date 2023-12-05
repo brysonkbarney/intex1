@@ -9,62 +9,148 @@
 <body>
     <h1>View all the data here!</h1>
   
-    <label><b>User Table:</b></label>
-    <br><br>
-    <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
-        <thead style="background-color: cornflowerblue; color: white;">
-        <tr>
-            <th style="text-align: left;">User ID</th>
-            <th style="text-align: left;">Time</th>
-            <th style="text-align: left;">Age</th>
-            <th style="text-align: left;">Gender</th>
-            <th style="text-align: left;">Relationship Status</th>
-            <th style="text-align: left;">Occupation Status</th>
-            <th style="text-align: left;">Do you use social media?</th>
-            <th style="text-align: left;">Average Daily Social Media Usage</th>
-            <th style="text-align: left;">How often do you find yourself using Social media without a specific purpose?</th>
-            <th style="text-align: left;">How often do you get distracted by Social media?</th>
-            <th style="text-align: left;">Do you feel restless if you haven't used Social media in a while?</th>
-            <th style="text-align: left;">How easily distracted are you?</th>
-            <th style="text-align: left;">How much are you bothered by worries?</th>
-            <th style="text-align: left;">Do you find it difficult to concentrate?</th>
-            <th style="text-align: left;">How often do you compare yourself to others through the use of social media?</th>
-            <th style="text-align: left;">How do you feel about these comparisons, generally speaking?</th>
-            <th style="text-align: left;">How often do you look to seek validation from social media?</th>
-            <th style="text-align: left;">How often do you feel depressed or down?</th>
-            <th style="text-align: left;">How frequently does your interest in daily activities fluctuate?</th>
-            <th style="text-align: left;">How often do you face issues regarding sleep?</th>
-            <th style="text-align: left;">Location</th>
-        </tr>
-        </thead>
-        <tbody style="font-family: Arial; font-size: 9pt;">
-        <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+    <form action="/viewData" method="GET">
+        <label><b>User Table:</b></label>
+        <br><br>
+        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+            <thead style="background-color: cornflowerblue; color: white;">
             <tr>
-            <td><%= mydata[iCount].userID %></td>
-            <td><%= mydata[iCount].timestamp %></td>
-            <td><%= mydata[iCount].age %></td>
-            <td><%= mydata[iCount].gender %></td>
-            <td><%= mydata[iCount].relationshipStatus %></td>
-            <td><%= mydata[iCount].occupationStatus %></td>
-            <td><%= mydata[iCount].socialMediaUsage %></td>
-            <td><%= mydata[iCount].avgDailyTime %></td>
-            <td><%= mydata[iCount].purpose %></td>
-            <td><%= mydata[iCount].distracted %></td>
-            <td><%= mydata[iCount].restless %></td>
-            <td><%= mydata[iCount].easilyDistracted %></td>
-            <td><%= mydata[iCount].worried %></td>
-            <td><%= mydata[iCount].concentration %></td>
-            <td><%= mydata[iCount].comparison %></td>
-            <td><%= mydata[iCount].comparisonFeelings %></td>
-            <td><%= mydata[iCount].validation %></td>
-            <td><%= mydata[iCount].depression %></td>
-            <td><%= mydata[iCount].interests %></td>
-            <td><%= mydata[iCount].sleep %></td>
-            <td><%= mydata[iCount].location %></td>
+                <th style="text-align: left;">User ID</th>
+                <th style="text-align: left;">Time</th>
+                <th style="text-align: left;">Age</th>
+                <th style="text-align: left;">Gender</th>
+                <th style="text-align: left;">Relationship Status</th>
+                <th style="text-align: left;">Occupation Status</th>
+                <th style="text-align: left;">Do you use social media?</th>
+                <th style="text-align: left;">Average Daily Social Media Usage</th>
+                <th style="text-align: left;">How often do you find yourself using Social media without a specific purpose?</th>
+                <th style="text-align: left;">How often do you get distracted by Social media?</th>
+                <th style="text-align: left;">Do you feel restless if you haven't used Social media in a while?</th>
+                <th style="text-align: left;">How easily distracted are you?</th>
+                <th style="text-align: left;">How much are you bothered by worries?</th>
+                <th style="text-align: left;">Do you find it difficult to concentrate?</th>
+                <th style="text-align: left;">How often do you compare yourself to others through the use of social media?</th>
+                <th style="text-align: left;">How do you feel about these comparisons, generally speaking?</th>
+                <th style="text-align: left;">How often do you look to seek validation from social media?</th>
+                <th style="text-align: left;">How often do you feel depressed or down?</th>
+                <th style="text-align: left;">How frequently does your interest in daily activities fluctuate?</th>
+                <th style="text-align: left;">How often do you face issues regarding sleep?</th>
+                <th style="text-align: left;">Location</th>
             </tr>
-        <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                <tr>
+                <td><%= mydata[iCount].userID %></td>
+                <td><%= mydata[iCount].timestamp %></td>
+                <td><%= mydata[iCount].age %></td>
+                <td><%= mydata[iCount].gender %></td>
+                <td><%= mydata[iCount].relationshipStatus %></td>
+                <td><%= mydata[iCount].occupationStatus %></td>
+                <td><%= mydata[iCount].socialMediaUsage %></td>
+                <td><%= mydata[iCount].avgDailyTime %></td>
+                <td><%= mydata[iCount].purpose %></td>
+                <td><%= mydata[iCount].distracted %></td>
+                <td><%= mydata[iCount].restless %></td>
+                <td><%= mydata[iCount].easilyDistracted %></td>
+                <td><%= mydata[iCount].worried %></td>
+                <td><%= mydata[iCount].concentration %></td>
+                <td><%= mydata[iCount].comparison %></td>
+                <td><%= mydata[iCount].comparisonFeelings %></td>
+                <td><%= mydata[iCount].validation %></td>
+                <td><%= mydata[iCount].depression %></td>
+                <td><%= mydata[iCount].interests %></td>
+                <td><%= mydata[iCount].sleep %></td>
+                <td><%= mydata[iCount].location %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </form>
+
+    <form action="/viewData" method="GET">
+        <label><b>User-Platform Table:</b></label>
+        <br><br>
+        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+            <thead style="background-color: cornflowerblue; color: white;">
+            <tr>
+                <th style="text-align: left;">User ID</th>
+                <th style="text-align: left;">Platform Number</th>
+            </tr>
+            </thead>
+            <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                <tr>
+                <td><%= mydata[iCount].userID %></td>
+                <td><%= mydata[iCount].platformNum %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </form>
+
+    <form action="/viewData" method="GET">
+        <label><b>User-Organization Table:</b></label>
+        <br><br>
+        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+            <thead style="background-color: cornflowerblue; color: white;">
+            <tr>
+                <th style="text-align: left;">User ID</th>
+                <th style="text-align: left;">Organization Number</th>
+            </tr>
+            </thead>
+            <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                <tr>
+                <td><%= mydata[iCount].userID %></td>
+                <td><%= mydata[iCount].organizationNum %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </form>
+
+    <form action="/viewData" method="GET">
+        <label><b>Platform Table:</b></label>
+        <br><br>
+        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+            <thead style="background-color: cornflowerblue; color: white;">
+            <tr>
+                <th style="text-align: left;">Platform Number</th>
+                <th style="text-align: left;">Platform Name</th>
+            </tr>
+            </thead>
+            <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                <tr>
+                <td><%= mydata[iCount].platformNum %></td>
+                <td><%= mydata[iCount].platformName %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </form>
+
+    <form action="/viewData" method="GET">
+        <label><b>Organization Table:</b></label>
+        <br><br>
+        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+            <thead style="background-color: cornflowerblue; color: white;">
+            <tr>
+                <th style="text-align: left;">Organization Number</th>
+                <th style="text-align: left;">Organization Name</th>
+            </tr>
+            </thead>
+            <tbody style="font-family: Arial; font-size: 9pt;">
+            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                <tr>
+                <td><%= mydata[iCount].organizationNum %></td>
+                <td><%= mydata[iCount].organizationName %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </form>
 
 </body>
 </html>
