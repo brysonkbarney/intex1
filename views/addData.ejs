@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Welcome to our Add Data Page!</h1>
     <form action="/storeData" method="POST">
@@ -13,13 +15,13 @@
         <input type="number" id="age" name="age">
         <br><br>
         <legend>Gender:</legend>
-<input type="radio" id="genderMale" name="gender" value="Male">
-<label for="genderMale">Male</label><br>
-<input type="radio" id="genderFemale" name="gender" value="Female">
-<label for="genderFemale">Female</label><br>
-<input type="radio" id="genderOther" name="gender" value="Other">
-<label for="genderOther">Other (Prefer not to Identify)</label><br>
-<br><br>
+        <input type="radio" id="genderMale" name="gender" value="Male">
+        <label for="genderMale">Male</label><br>
+        <input type="radio" id="genderFemale" name="gender" value="Female">
+        <label for="genderFemale">Female</label><br>
+        <input type="radio" id="genderOther" name="gender" value="Other">
+        <label for="genderOther">Other (Prefer not to Identify)</label><br>
+        <br><br>
 
         <br><br>
         <label for="relationshipStatus">Relationship Status:</label>
@@ -84,7 +86,7 @@
         <input type="checkbox" id="pinterest" name="platforms[]" value="Pinterest">
         <label for="pinterest">Pinterest</label><br>
         <br><br>
-        <label for="socialMediaUsage">Do you use Social Media?  (Y/N):</label>
+        <label for="socialMediaUsage">Do you use Social Media? (Y/N):</label>
         <input type="checkbox" id="socialMediaUsage" name="socialMediaUsage">
         <br><br>
         <label for="avgDailyTime">What is the average time you spend on social media every day?</label>
@@ -96,44 +98,49 @@
             <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
             <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
         </select>
-            <br><br>
-            <label for="purpose">How often do you find yourself using Social media without a specific purpose?</label>
-            <input type="number" id="purpose" name="purpose">
-            <br><br>
-            <label for="distracted">How often do you get distracted by Social media when you are busy doing something?</label>
-            <input type="number" id="distracted" name="distracted">
-            <br><br>
-            <label for="restless">Do you feel restless if you haven't used Social media in a while?</label>
-            <input type="number" id="restless" name="restless">
-            <br><br>
-            <label for="easilyDistracted">On a scale of 1 to 5, how easily distracted are you?</label>
-            <input type="number" id="easilyDistracted" name="easilyDistracted">
-            <br><br>
-            <label for="worried">On a scale of 1 to 5, how much are you bothered by worries?</label>
-            <input type="number" id="worried" name="worried">
-            <br><br>
-            <label for="concentration">Do you find it difficult to concentrate on things?</label>
-            <input type="number" id="concentration" name="concentration">
-            <br><br>
-            <label for="comparison">On a scale of 1-5, how often do you compare yourself to other successful people through the use of social media?</label>
-            <input type="number" id="comparison" name="comparison">
-            <br><br>
-            <label for="comparisonFeelings">Following the previous question, how do you feel about these comparisons, generally speaking?</label>
-            <input type="number" id="comparisonFeelings" name="comparisonFeelings">
-            <br><br>
-            <label for="validation">How often do you look to seek validation from features of social media?</label>
-            <input type="number" id="validation" name="validation">
-            <br><br>
-            <label for="depression">How often do you feel depressed or down?</label>
-            <input type="number" id="depression" name="depression">
-            <br><br>
-            <label for="interests">On a scale of 1 to 5, how frequently does your interest in daily activities fluctuate?</label>
-            <input type="number" id="interests" name="interests">
-            <br><br>
-            <label for="sleep">On a scale of 1 to 5, how often do you face issues regarding sleep?</label>
-            <input type="number" id="sleep" name="sleep">
-            <br><br>
-        <button type="submit">Submit.</button>
+        <br><br>
+        <label for="purpose">How often do you find yourself using Social media without a specific purpose?</label>
+        <input type="number" id="purpose" name="purpose">
+        <br><br>
+        <label for="distracted">How often do you get distracted by Social media when you are busy doing
+            something?</label>
+        <input type="number" id="distracted" name="distracted">
+        <br><br>
+        <label for="restless">Do you feel restless if you haven't used Social media in a while?</label>
+        <input type="number" id="restless" name="restless">
+        <br><br>
+        <label for="easilyDistracted">On a scale of 1 to 5, how easily distracted are you?</label>
+        <input type="number" id="easilyDistracted" name="easilyDistracted">
+        <br><br>
+        <label for="worried">On a scale of 1 to 5, how much are you bothered by worries?</label>
+        <input type="number" id="worried" name="worried">
+        <br><br>
+        <label for="concentration">Do you find it difficult to concentrate on things?</label>
+        <input type="number" id="concentration" name="concentration">
+        <br><br>
+        <label for="comparison">On a scale of 1-5, how often do you compare yourself to other successful people through
+            the use of social media?</label>
+        <input type="number" id="comparison" name="comparison">
+        <br><br>
+        <label for="comparisonFeelings">Following the previous question, how do you feel about these comparisons,
+            generally speaking?</label>
+        <input type="number" id="comparisonFeelings" name="comparisonFeelings">
+        <br><br>
+        <label for="validation">How often do you look to seek validation from features of social media?</label>
+        <input type="number" id="validation" name="validation">
+        <br><br>
+        <label for="depression">How often do you feel depressed or down?</label>
+        <input type="number" id="depression" name="depression">
+        <br><br>
+        <label for="interests">On a scale of 1 to 5, how frequently does your interest in daily activities
+            fluctuate?</label>
+        <input type="number" id="interests" name="interests">
+        <br><br>
+        <label for="sleep">On a scale of 1 to 5, how often do you face issues regarding sleep?</label>
+        <input type="number" id="sleep" name="sleep">
+        <br><br>
+        <button type="submit">Submit</button>
     </form>
 </body>
+
 </html>
