@@ -4,61 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
 </head>
 
 <body>
     <h1>Please Login with your Admin credentials.</h1>
-    <!--Add Logins to the Data Base. I think this should be used to Create an Account.-->
+
+    <!-- Login Form -->
     <form action="/storeLogin" method="post">
         <h2>Login</h2>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
+        <label for="login-username">Username:</label><br>
+        <input type="text" id="login-username" name="username" required><br>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <label for="login-password">Password:</label><br>
+        <input type="password" id="login-password" name="password" required><br>
         <br><br>
         <button type="submit">Login</button>
     </form>
     <br><br>
 
-    <form action="/findLogin" method="get">
+    <!-- Verify Login Form -->
+    <form action="/findLogin" method="post">
         <h2>Verify Login</h2>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
+        <label for="verify-username">Username:</label><br>
+        <input type="text" id="verify-username" name="username" required><br>
 
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <label for="verify-password">Password:</label><br>
+        <input type="password" id="verify-password" name="password" required><br>
         <br><br>
         <button type="submit">Verify Login</button>
     </form>
-    
-    <div class="buttons-container">
+    <br><br>
+
+    <!-- Create Account Form -->
+    <form action="/createAccount" method="post">
         <button type="submit">Create Account</button>
-    </div>
-
-    <body>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 50%; text-align:left">User Name:</th>
-                    <th style="width: 50%; text-align:left">Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for (let iCount=0; iCount < allLogins.length; iCount++) { %>
-                    <tr>
-                        <td>
-                            <%= allLogins[iCount].userName %>
-                        </td>
-                        <td>
-                            <%= allLogins[iCount].password %>
-                        </td>
-                    </tr>
-                    <% } %>
-            </tbody>
-        </table>
-    </body>
-
+    </form>
+</body>
 </html>
