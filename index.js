@@ -90,12 +90,12 @@ app.get("/addData", (req, res) => {
 });
 
 const organizationMapping = {
-  university: 1,
-  government: 2,
-  school: 3,
-  company: 4,
-  private: 5,
-  none: 6, // Assuming 'none' or 'N/A' is represented in your form and maps to 6
+  University: 1,
+  Government: 2,
+  School: 3,
+  Company: 4,
+  Private: 5,
+  None: 6, // Assuming 'none' or 'N/A' is represented in your form and maps to 6
 };
 
 const platformMapping = {
@@ -131,7 +131,7 @@ app.post("/storeData", async (req, res) => {
     validation,
     depression,
     interests,
-    sleep
+    sleep,
   } = req.body;
 
   try {
@@ -159,7 +159,7 @@ app.post("/storeData", async (req, res) => {
           validation,
           depression,
           interests,
-          sleep
+          sleep,
         })
         .returning("userID");
 
