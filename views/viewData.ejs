@@ -169,16 +169,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var rowsToShow = 10;
+            var table = document.getElementById('userTable');
+            var tbody = document.getElementById('userTableBody');
             var shownRowsCount = 0;
     
-            function toggleRows(tableId, tbodyId) {
-                var table = document.getElementById(tableId);
-                var tbody = document.getElementById(tbodyId);
-    
+            function toggleRows() {
                 // Toggle the class to show/hide rows
                 tbody.classList.toggle('hidden-rows');
     
-                // Change the button text based on current state
+                // Change the button text based on the current state
                 var button = document.querySelector('button');
                 if (tbody.classList.contains('hidden-rows')) {
                     button.innerText = 'Show All Rows';
@@ -207,9 +206,12 @@
             }
     
             // Initial setup to show only 10 rows
-            toggleRows('userTable', 'userTableBody');
+            toggleRows();
+    
+            // Attach the toggleRows function to the button click event
+            document.querySelector('button').addEventListener('click', toggleRows);
         });
-    </script>   
+    </script>     
 
 </body>
 </html>
