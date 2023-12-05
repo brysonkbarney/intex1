@@ -10,6 +10,8 @@ app.set("view engine", "ejs"); //using ejs for our files.
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static('public'));
+
 const knex = require("knex")({
   client: "pg",
   connection: {
