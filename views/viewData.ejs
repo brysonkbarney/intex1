@@ -169,7 +169,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var rowsToShow = 11;
+            var rowsToShow = 10;
             var table = document.getElementById('userTable');
             var tbody = document.getElementById('userTableBody');
             var button = document.getElementById('toggleButton');
@@ -207,7 +207,7 @@
             }
 
             // Initial setup to show only 10 rows
-            toggleRows(tableId, tbodyId);
+            toggleRows();
 
             // Attach the toggleRows function to the button click event
             button.addEventListener('click', toggleRows);
