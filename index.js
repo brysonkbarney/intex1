@@ -31,44 +31,50 @@ app.get("/", (req, res) => {
 
 //adding users to the data table
 app.post("/storeLogin", (req, res) => {
-  const { username, password } = req.body;
-
-  knex("login")
-    .insert({
-      userName: username,
-      password: password,
-    })
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json({ error: "Internal Server Error" });
-    });
-});
+    const { userName, password } = req.body; // Make sure these names match your form input names
+  
+    knex("login")
+      .insert({
+        userName: userName, // This should match the column name in your database
+        password: password,
+      })
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json({ error: "Internal Server Error" });
+      });
+  });
+  
 
 //searching the table for matches
-app.post("/findLogin", (req, res) => {
-  knex
-    .select("userName", "password")
-    .from("login")
-    .where({
-      userName: req.query.userName,
-      password: req.query.password, // Add this line to include password in the query
-    })
-    .then((login) => {
-      if (login.length > 0) {
-        // If the login array is not empty, it means a match was found
-        res.redirect("/");
-      } else {
-        // No matching credentials found
-        res.status(401).send("Invalid credentials");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
+// index.js
+// index.js
+app.post("/findLogin", async (req, res) => {
+    // Use 'username' and 'password' to match the form input names
+    const { username, password } = req.body;
+
+    console.log("Received body:", req.body);
+    console.log("Extracted username:", username);
+    console.log("Extracted password:", password);
+
+    try {
+        // Ensure the column name matches the database column name
+        const user = await knex.select('*').from('login').where({
+            'userName': username, // Column name in database: 'userName'
+            password: password
+        }).first();
+
+        if (user) {
+            res.send('<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>');
+        } else {
+            res.status(401).send('Invalid credentials');
+        }
+    } catch (error) {
+        console.error("Error details:", error);
+        res.status(500).send("An error occurred during login.");
+    }
 });
 
 //Get request for the login page
