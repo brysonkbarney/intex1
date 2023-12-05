@@ -66,7 +66,6 @@ app.post("/findLogin", (req, res) => {
         });    
 });
 
-
 //Get request for the login page
 app.get("/login", (req, res) => {
   knex
@@ -85,9 +84,83 @@ app.get("/login", (req, res) => {
 //add account user name and password to our account table
 
 //Get request for the add data survey page
-app.get("/addData", (req, res) => {
-  res.render("addData"); // This will render the login.ejs file
+app.post("/storeData", async (req, res) => {
+    const { 
+        age, 
+        gender, 
+        relationshipStatus, 
+        occupationStatus, 
+        organizations, 
+        platforms, 
+        socialMediaUsage, 
+        avgDailyTime, 
+        purpose, 
+        distracted, 
+        restless, 
+        easilyDistracted, 
+        worried, 
+        concentration, 
+        comparison, 
+        comparisonFeelings, 
+        validation, 
+        depression, 
+        interests, 
+        sleep, 
+        location
+    } = req.body;
+    
+    try {
+        await knex.transaction(async trx => {
+            const [userId] = await trx('user').insert({
+                age,
+                gender,
+                relationshipStatus,
+                occupationStatus,
+                socialMediaUsage, 
+                avgDailyTime, 
+                purpose, 
+                distracted, 
+                restless, 
+                easilyDistracted, 
+                worried, 
+                concentration, 
+                comparison, 
+                comparisonFeelings, 
+                validation, 
+                depression, 
+                interests, 
+                sleep, 
+                location
+            }).returning('userID');
+
+            if (organizations) {
+                const userOrganizations = Array.isArray(organizations) ? organizations : [organizations];
+                const organizationInserts = userOrganizations.map(org => ({
+                    userID: userId,
+                    organizationName: org
+                }));
+                await trx('user_organization').insert(organizationInserts);
+            }
+
+            if (platforms) {
+                const userPlatforms = Array.isArray(platforms) ? platforms : [platforms];
+                const platformInserts = userPlatforms.map(platform => ({
+                    userID: userId,
+                    platformName: platform
+                }));
+                await trx('user_platform').insert(platformInserts);
+            }
+
+            await trx.commit();
+            res.send("Record added successfully. Thank you for your response.");
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Failed to store data");
+    }
 });
+
+
 
 //Get request for the dashboard
 app.get("/dashboard", (req, res) => {
