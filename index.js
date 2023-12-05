@@ -14,8 +14,8 @@ const knex = require("knex")({
   client: "pg",
   connection: {
     host: process.env.RDS_HOSTNAME || "localhost",
-    user: process.env.RDS_USERNAME || "carolinetobler" || "postgres" || "admin",
-    password: process.env.RDS_PASSWORD || "P0ftim122-" || "admin",
+    user: process.env.RDS_USERNAME || "carolinetobler",
+    password: process.env.RDS_PASSWORD || "P0ftim122-",
     database: process.env.RDS_DB_NAME || "ebdb",
     port: process.env.RDS_PORT || 5432,
     ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false,
@@ -89,6 +89,26 @@ app.get("/addData", (req, res) => {
   res.render("addData"); // This will render the addData.ejs file
 });
 
+const organizationMapping = {
+  university: 1,
+  government: 2,
+  school: 3,
+  company: 4,
+  private: 5,
+  none: 6, // Assuming 'none' or 'N/A' is represented in your form and maps to 6
+};
+
+const platformMapping = {
+  twitter: 1,
+  youtube: 2,
+  facebook: 3,
+  reddit: 4,
+  discord: 5,
+  pinterest: 6,
+  instagram: 7,
+  snapchat: 8,
+  tiktok: 9,
+};
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
   const {
@@ -117,12 +137,16 @@ app.post("/storeData", async (req, res) => {
 
   try {
     await knex.transaction(async (trx) => {
-      const [userId] = await trx("user")
+      const currentTimestamp = new Date();
+      const location = "Provo"; // Set location to 'Provo'
+      const [userInsertResult] = await trx("user")
         .insert({
+          timestamp: currentTimestamp, // Include this line
           age,
           gender,
           relationshipStatus,
           occupationStatus,
+          location,
           socialMediaUsage,
           avgDailyTime,
           purpose,
@@ -137,28 +161,31 @@ app.post("/storeData", async (req, res) => {
           depression,
           interests,
           sleep,
-          location,
         })
         .returning("userID");
 
+      const userId = userInsertResult.userID;
+
+      // Inserting into user_organization
       if (organizations) {
         const userOrganizations = Array.isArray(organizations)
           ? organizations
           : [organizations];
-        const organizationInserts = userOrganizations.map((org) => ({
+        const organizationInserts = userOrganizations.map((orgName) => ({
           userID: userId,
-          organizationName: org,
+          organizationNum: organizationMapping[orgName],
         }));
         await trx("user_organization").insert(organizationInserts);
       }
 
+      // Inserting into user_platform
       if (platforms) {
         const userPlatforms = Array.isArray(platforms)
           ? platforms
           : [platforms];
-        const platformInserts = userPlatforms.map((platform) => ({
+        const platformInserts = userPlatforms.map((platformName) => ({
           userID: userId,
-          platformName: platform,
+          platformNum: platformMapping[platformName],
         }));
         await trx("user_platform").insert(platformInserts);
       }
