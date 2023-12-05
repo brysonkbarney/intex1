@@ -5,15 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .hidden-rows {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>View all the data here!</h1>
   
     <form action="/viewData" method="GET">
 
+        <!--Show User Table-->
         <label><b>User Table:</b></label>
         <br><br>
-        <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+        <table id="userTable" style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
             <thead style="background-color: cornflowerblue; color: white;">
             <tr>
                 <th style="text-align: left;">User ID</th>
@@ -39,7 +45,7 @@
                 <th style="text-align: left;">Location</th>
             </tr>
             </thead>
-            <tbody style="font-family: Arial; font-size: 9pt;">
+            <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
             <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
                 <tr>
                 <td><%= mydata[iCount].userID %></td>
@@ -67,7 +73,10 @@
             <% } %>
             </tbody>
         </table>
+        <!--Button to expand rows-->
+        <button onclick="toggleRows('userTable', 'userTableBody')">Show All Rows</button>
 
+        <!--Show User-Platform Table-->
         <label><b>User-Platform Table:</b></label>
         <br><br>
         <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
@@ -87,6 +96,7 @@
             </tbody>
         </table>
 
+        <!--Show User-Organization Table-->
         <label><b>User-Organization Table:</b></label>
         <br><br>
         <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
@@ -106,6 +116,7 @@
             </tbody>
         </table>
 
+        <!--Show Platform Table-->
         <label><b>Platform Table:</b></label>
         <br><br>
         <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
@@ -125,6 +136,7 @@
             </tbody>
         </table>
 
+        <!--Show Organization Table-->
         <label><b>Organization Table:</b></label>
         <br><br>
         <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
@@ -145,6 +157,46 @@
         </table>
         
     </form>
+
+    <script>
+        var rowsToShow = 10; // Set the number of rows to show initially
+        var shownRowsCount = 0;
+    
+        function toggleRows(tableId, tbodyId) {
+            var table = document.getElementById(tableId);
+            var tbody = document.getElementById(tbodyId);
+    
+            // Toggle the class to show/hide rows
+            tbody.classList.toggle('hidden-rows');
+    
+            // Change the button text based on current state
+            var button = document.querySelector('button');
+            if (tbody.classList.contains('hidden-rows')) {
+                button.innerText = 'Show All Rows';
+            } else {
+                button.innerText = 'Hide Rows';
+            }
+    
+            // Show additional rows if expanding
+            if (!tbody.classList.contains('hidden-rows')) {
+                for (var i = shownRowsCount; i < shownRowsCount + rowsToShow; i++) {
+                    var row = table.rows[i];
+                    if (row) {
+                        row.style.display = 'table-row';
+                    }
+                }
+                shownRowsCount += rowsToShow;
+            } else {
+                // Hide all rows if collapsing
+                for (var i = shownRowsCount; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    if (row) {
+                        row.style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>    
 
 </body>
 </html>
