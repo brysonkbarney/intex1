@@ -167,46 +167,49 @@
     </form>
 
     <script>
-        var rowsToShow = 10; // Set the number of rows to show initially
-        var shownRowsCount = rowsToShow; // Initialize the count with the number of rows to show
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var table = document.getElementById('userTable');
-            var tbody = document.getElementById('userTableBody');
-
-            // Initially hide rows beyond the initial count
-            for (var i = rowsToShow; i < table.rows.length; i++) {
-                var row = table.rows[i];
-                if (row) {
-                    row.style.display = 'none';
+        document.addEventListener('DOMContentLoaded', function () {
+            var rowsToShow = 10;
+            var shownRowsCount = 0;
+    
+            function toggleRows(tableId, tbodyId) {
+                var table = document.getElementById(tableId);
+                var tbody = document.getElementById(tbodyId);
+    
+                // Toggle the class to show/hide rows
+                tbody.classList.toggle('hidden-rows');
+    
+                // Change the button text based on current state
+                var button = document.querySelector('button');
+                if (tbody.classList.contains('hidden-rows')) {
+                    button.innerText = 'Show All Rows';
+                } else {
+                    button.innerText = 'Hide Rows';
+                }
+    
+                // Show additional rows if expanding
+                if (!tbody.classList.contains('hidden-rows')) {
+                    for (var i = shownRowsCount; i < shownRowsCount + rowsToShow; i++) {
+                        var row = table.rows[i];
+                        if (row) {
+                            row.style.display = 'table-row';
+                        }
+                    }
+                    shownRowsCount += rowsToShow;
+                } else {
+                    // Hide all rows if collapsing
+                    for (var i = shownRowsCount; i < table.rows.length; i++) {
+                        var row = table.rows[i];
+                        if (row) {
+                            row.style.display = 'none';
+                        }
+                    }
                 }
             }
+    
+            // Initial setup to show only 10 rows
+            toggleRows('userTable', 'userTableBody');
         });
-
-        function toggleRows(tableId, tbodyId) {
-            var table = document.getElementById(tableId);
-            var tbody = document.getElementById(tbodyId);
-
-            // Toggle the class to show/hide rows
-            tbody.classList.toggle('hidden-rows');
-
-            // Change the button text based on current state
-            var button = document.querySelector('button');
-            if (tbody.classList.contains('hidden-rows')) {
-                button.innerText = 'Show All Rows';
-            } else {
-                button.innerText = 'Hide Rows';
-            }
-
-            // Show additional rows if expanding
-            for (var i = shownRowsCount; i < table.rows.length; i++) {
-                var row = table.rows[i];
-                if (row) {
-                    row.style.display = tbody.classList.contains('hidden-rows') ? 'none' : 'table-row';
-                }
-            }
-        }
-    </script>    
+    </script>   
 
 </body>
 </html>
