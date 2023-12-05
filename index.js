@@ -89,16 +89,12 @@ app.get("/addData", (req, res) => {
   res.render("addData"); // This will render the login.ejs file
 });
 
-//Get request for the view all data page
-app.get("/viewData", (req, res) => {
-  res.render("viewData"); // This will render the login.ejs file
-});
-
 //Get request for the dashboard
 app.get("/dashboard", (req, res) => {
   res.render("dashboard"); // This will render the login.ejs file
 });
 
+//Get request for the view all data page
 app.get('/viewData', (req, res) =>{
   knex.select('userID', 'timestamp', 'age', 'gender', 'relationshipStatus', 'occupationStatus', 'socialMediaUsage', 'avgDailyTime', 'purpose', 'distracted', 'restless', 'easilyDistracted', 'worried', 'concentration', 'comparison', 'comparisonFeelings', 'validation', 'depression', 'interests', 'sleep', 'location').from('user').then(user => {
       res.render('viewData', {mydata: user});
