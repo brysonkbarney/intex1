@@ -160,7 +160,7 @@ app.post("/storeData", async (req, res) => {
             res.send("Record added successfully. Thank you for your response.");
         });
     } catch (error) {
-        console.error(error);
+        console.error("Error details:", error);
         res.status(500).send("Failed to store data");
     }
 });
