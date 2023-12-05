@@ -83,6 +83,11 @@ app.get("/login", (req, res) => {
 //Get Request for creating an account in our login page.
 //add account user name and password to our account table
 
+// Get request for the add data page
+app.get("/addData", (req, res) => {
+    res.render("addData"); // This will render the addData.ejs file
+  });
+  
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
     const { 
