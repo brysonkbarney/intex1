@@ -44,6 +44,29 @@ app.post("/storeLogin", (req, res) => {
     });
 });
 
+app.get("/findLogin", (req, res) => {
+    knex.select("userName", "password")
+        .from("login")
+        .where({
+            userName: req.query.userName,
+            password: req.query.password  // Add this line to include password in the query
+        })
+        .then(login => {
+            if (login.length > 0) {
+                // If the login array is not empty, it means a match was found
+                res.redirect("/");
+            } else {
+                // No matching credentials found
+                res.status(401).send("Invalid credentials");
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ err });
+        });    
+});
+
+
 //Get request for the login page
 app.get("/login", (req, res) => {
   knex

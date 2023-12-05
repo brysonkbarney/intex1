@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <h1>Welcome to our login Page!</h1>
+    <h1>Please Login with your Admin credentials.</h1>
+    <!--Add Logins to the Data Base. I think this should be used to Create an Account.-->
     <form action="/storeLogin" method="post">
         <h2>Login</h2>
         <label for="username">Username:</label><br>
@@ -18,13 +19,24 @@
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required><br>
         <br><br>
-        <div class="buttons-container">
-            <button type="submit">Create Account</button>
-        </div>
+        <button type="submit">Login</button>
     </form>
-    <button type="submit">Login</button>
     <br><br>
-    <br>
+
+    <form action="/findLogin" method="get">
+        <h2>Verify Login</h2>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <br><br>
+        <button type="submit">Verify Login</button>
+    </form>
+    
+    <div class="buttons-container">
+        <button type="submit">Create Account</button>
+    </div>
 
     <body>
         <table>
