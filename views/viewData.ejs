@@ -8,5 +8,62 @@
 </head>
 <body>
     <h1>View all the data here!</h1>
+  
+    <label><b>Country Information:</b></label>
+    <br><br>
+    <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+        <thead style="background-color: cornflowerblue; color: white;">
+        <tr>
+            <th style="text-align: left;">User ID</th>
+            <th style="text-align: left;">Time</th>
+            <th style="text-align: left;">Age</th>
+            <th style="text-align: left;">Gender</th>
+            <th style="text-align: left;">Relationship Status</th>
+            <th style="text-align: left;">Occupation Status</th>
+            <th style="text-align: left;">Do you use social media?</th>
+            <th style="text-align: left;">Average Daily Social Media Usage</th>
+            <th style="text-align: left;">How often do you find yourself using Social media without a specific purpose?</th>
+            <th style="text-align: left;">How often do you get distracted by Social media?</th>
+            <th style="text-align: left;">Do you feel restless if you haven't used Social media in a while?</th>
+            <th style="text-align: left;">How easily distracted are you?</th>
+            <th style="text-align: left;">How much are you bothered by worries?</th>
+            <th style="text-align: left;">Do you find it difficult to concentrate?</th>
+            <th style="text-align: left;">How often do you compare yourself to others through the use of social media?</th>
+            <th style="text-align: left;">How do you feel about these comparisons, generally speaking?</th>
+            <th style="text-align: left;">How often do you look to seek validation from social media?</th>
+            <th style="text-align: left;">How often do you feel depressed or down?</th>
+            <th style="text-align: left;">How frequently does your interest in daily activities fluctuate?</th>
+            <th style="text-align: left;">How often do you face issues regarding sleep?</th>
+            <th style="text-align: left;">Location</th>
+        </tr>
+        </thead>
+        <tbody style="font-family: Arial; font-size: 9pt;">
+        <% for (let iCount = 0; iCount < mycountry.length; iCount++) { %>
+            <tr>
+            <td><%= mycountry[iCount].country_name %></td>
+            <td><%= mycountry[iCount].popular_site %></td>
+            <td><%= mycountry[iCount].capital %></td>
+            <td><%= mycountry[iCount].population %></td>
+            <td style="text-align: center;"><%= mycountry[iCount].visited %></td>
+            <td style="text-align: center;"><%= mycountry[iCount].covid_level %></td>
+            <td style="text-align: center;">
+                <form action="/editCountry/<%= mycountry[iCount].country_id %>" method="GET">
+                <button type="submit">Edit</button>
+                </form>
+            </td>
+            <td style="text-align: center;">
+                <form action="/deleteCountry/<%= mycountry[iCount].country_id %>" method="POST">
+                <button type="submit">Delete</button>
+                </form>
+            </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <br><br>
+    <form action="/addCountry" method="GET">
+        <button type="submit">Add Country</button>
+    </form>
+
 </body>
 </html>
