@@ -163,21 +163,35 @@
             </tbody>
         </table>
         -->
-
         
     </form>
 
     <script>
         var rowsToShow = 10; // Set the number of rows to show initially
         var shownRowsCount = 0;
-    
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var table = document.getElementById('userTable');
+            var tbody = document.getElementById('userTableBody');
+
+            // Initially hide all rows except the first 10
+            for (var i = rowsToShow; i < table.rows.length; i++) {
+                var row = table.rows[i];
+                if (row) {
+                    row.style.display = 'none';
+                }
+            }
+
+            shownRowsCount = rowsToShow;
+        });
+
         function toggleRows(tableId, tbodyId) {
             var table = document.getElementById(tableId);
             var tbody = document.getElementById(tbodyId);
-    
+
             // Toggle the class to show/hide rows
             tbody.classList.toggle('hidden-rows');
-    
+
             // Change the button text based on current state
             var button = document.querySelector('button');
             if (tbody.classList.contains('hidden-rows')) {
@@ -185,7 +199,7 @@
             } else {
                 button.innerText = 'Hide Rows';
             }
-    
+
             // Show additional rows if expanding
             if (!tbody.classList.contains('hidden-rows')) {
                 for (var i = shownRowsCount; i < shownRowsCount + rowsToShow; i++) {
@@ -205,7 +219,7 @@
                 }
             }
         }
-    </script>    
+    </script>     
 
 </body>
 </html>
