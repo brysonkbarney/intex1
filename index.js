@@ -131,8 +131,7 @@ app.post("/storeData", async (req, res) => {
     validation,
     depression,
     interests,
-    sleep,
-    location,
+    sleep
   } = req.body;
 
   try {
@@ -160,7 +159,7 @@ app.post("/storeData", async (req, res) => {
           validation,
           depression,
           interests,
-          sleep,
+          sleep
         })
         .returning("userID");
 
