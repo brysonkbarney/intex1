@@ -44,7 +44,7 @@ app.post("/storeLogin", (req, res) => {
     });
 });
 
-app.get("/findLogin", (req, res) => {
+app.post("/findLogin", (req, res) => {
     knex.select("userName", "password")
         .from("login")
         .where({
