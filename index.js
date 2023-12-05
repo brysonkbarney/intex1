@@ -99,15 +99,15 @@ const organizationMapping = {
 };
 
 const platformMapping = {
-  twitter: 1,
-  youtube: 2,
-  facebook: 3,
-  reddit: 4,
-  discord: 5,
-  pinterest: 6,
-  instagram: 7,
-  snapchat: 8,
-  tiktok: 9,
+  Twitter: 1,
+  Youtube: 2,
+  Facebook: 3,
+  Reddit: 4,
+  Discord: 5,
+  Pinterest: 6,
+  Instagram: 7,
+  Snapchat: 8,
+  TikTok: 9,
 };
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
