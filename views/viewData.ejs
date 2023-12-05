@@ -73,8 +73,9 @@
             <% } %>
             </tbody>
         </table>
+        <br>
         <!--Button to expand rows-->
-        <button onclick="toggleRows('userTable', 'userTableBody')">Show All Rows</button>
+        <button id="toggleButton" onclick="toggleRows('userTable', 'userTableBody')">Show All Rows</button>
 
         <!-- Show User-Platform Table -->
         <!--
@@ -206,7 +207,7 @@
             }
 
             // Initial setup to show only 10 rows
-            toggleRows();
+            toggleRows(tableId, tbodyId);
 
             // Attach the toggleRows function to the button click event
             button.addEventListener('click', toggleRows);
