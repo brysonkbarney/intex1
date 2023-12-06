@@ -38,23 +38,38 @@
   ======================================================== -->
 </head>
 
-<body>
+<body style="background-color: #1b2f45">
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+
+      <h2>Login or Create Account</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Login or Create Account</li>
+      </ol>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
     <!-- Verify Login Form -->
-    <form action="/findLogin" method="post">
-        <h2>Login</h2>
-        <label for="verify-username">Username:</label><br>
-        <input type="text" id="verify-username" name="username" required><br>
-
-        <label for="verify-password">Password:</label><br>
-        <input type="password" id="verify-password" name="password" required><br>
-        <br><br>
-        <button type="submit">Login</button>
-    </form>
+    <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+        <form action="/findLogin" method="post" style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
+            <h2>Login</h2>
+            <label for="verify-username">Username:</label><br>
+            <input type="text" id="verify-username" name="username" required style="width: 100%; margin-bottom: 10px;"><br>
+    
+            <label for="verify-password">Password:</label><br>
+            <input type="password" id="verify-password" name="password" required style="width: 100%; margin-bottom: 10px;"><br>
+            
+            <button type="submit" style="width: 50%;">Login</button>
+            <br><br>
+            <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a></p>
+            <p style="font-size: 10px;">*To create an account, you must be logged in with Admin or Personal credentials.</p>
+        </form>
+    </div>
+    
     <br><br>
-
-    <form action="/create" method="get">
-        <button type="submit">Create Account</button>
-    </form>
 </body>
 
 </html>
