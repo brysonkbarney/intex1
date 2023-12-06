@@ -95,6 +95,7 @@
         </div>
       </header><!-- End Header -->
 <!-- ======= Breadcrumbs ======= -->
+<br><br>
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center">
         <h2>View Survey Results</h2>
@@ -104,7 +105,21 @@
         </ol>
     </div>
 </div>
-<br><br><br>
+
+<br>
+<form action="/viewData" method="GET">
+    <select name="userId">
+        <option value="">Select User ID</option>
+        <% mydata.forEach(function(user) { %>
+            <option value="<%= user.userID %>"><%= user.userID %></option>
+        <% }); %>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+<form action="/viewData" method="GET">
+    <button type="submit">View All Users</button>
+</form>
+<br>
 
 <div style="display: flex; justify-content: center; align-items: center;">
     <form action="/viewData" method="GET" style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
@@ -144,31 +159,30 @@
                         </thead>
                         <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
                         <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
-                        
                             <tr>
-                            <td><%= mydata[iCount].userID %></td>
-                            <td><%= mydata[iCount].timestamp %></td>
-                            <td><%= mydata[iCount].age %></td>
-                            <td><%= mydata[iCount].gender %></td>
-                            <td><%= mydata[iCount].relationshipStatus %></td>
-                            <td><%= mydata[iCount].occupationStatus %></td>
-                            <td><%= mydata[iCount].organizationAffiliation %></td>
-                            <td><%= mydata[iCount].socialMediaUsage %></td>
-                            <td><%= mydata[iCount].socialMediaPlatforms %></td>
-                            <td><%= mydata[iCount].avgDailyTime %></td>
-                            <td><%= mydata[iCount].purpose %></td>
-                            <td><%= mydata[iCount].distracted %></td>
-                            <td><%= mydata[iCount].restless %></td>
-                            <td><%= mydata[iCount].easilyDistracted %></td>
-                            <td><%= mydata[iCount].worried %></td>
-                            <td><%= mydata[iCount].concentration %></td>
-                            <td><%= mydata[iCount].comparison %></td>
-                            <td><%= mydata[iCount].comparisonFeelings %></td>
-                            <td><%= mydata[iCount].validation %></td>
-                            <td><%= mydata[iCount].depression %></td>
-                            <td><%= mydata[iCount].interests %></td>
-                            <td><%= mydata[iCount].sleep %></td>
-                            <td><%= mydata[iCount].location %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].userID %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].timestamp %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].age %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].gender %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].relationshipStatus %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].occupationStatus %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].organizationAffiliation %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaUsage %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaPlatforms %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].avgDailyTime %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].purpose %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].distracted %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].restless %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].easilyDistracted %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].worried %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].concentration %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparison %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparisonFeelings %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].validation %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].depression %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].interests %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].sleep %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].location %></td>
                             </tr>
                         <% } %>
                         </tbody>
