@@ -23,8 +23,16 @@
     <br><br>
 
     <form action="/create" method="get">
-        <button type="submit">Create Account</button>
+        <% if (loggedIn) { %>
+            <!-- Enable the button if loggedIn is true -->
+            <button type="submit">Create Account</button>
+            <% } else { %>
+                <!-- Disable the button if loggedIn is false -->
+                <button type="button" disabled>Create Account</button>
+                <p>Please log in to create an account.</p>
+                <% } %>
     </form>
+    <br><br>
 </body>
 
 </html>
