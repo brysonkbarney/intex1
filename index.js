@@ -29,8 +29,8 @@ const knex = require("knex")({
   client: "pg",
   connection: {
     host: process.env.RDS_HOSTNAME || "localhost",
-    user: process.env.RDS_USERNAME || "carolinetobler",
-    password: process.env.RDS_PASSWORD || "P0ftim122-",
+    user: process.env.RDS_USERNAME || "postgres",
+    password: process.env.RDS_PASSWORD || "admin",
     database: process.env.RDS_DB_NAME || "ebdb",
     port: process.env.RDS_PORT || 5432,
     ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false,
@@ -102,6 +102,7 @@ app.get("/login", (req, res) => {
   const isLoggedIn = req.session.loggedIn || false; // Check if user is logged in
   res.render("login", { isLoggedIn: isLoggedIn }); // Pass the logged-in status to the EJS template
 });
+
 
 // Get request for the add data page
 app.get("/addData", (req, res) => {
@@ -308,5 +309,42 @@ app.get("/viewData", (req, res) => {
     );
   }
 }); // This is where the closing parenthesis should be
+
+//get request for a single record
+app.get("/searchData/:userNum", (req, res) => {
+  knex
+    .select(
+      "userID",
+      "timestamp",
+      "age",
+      "gender",
+      "relationshipStatus",
+      "occupationStatus",
+      "socialMediaUsage",
+      "avgDailyTime",
+      "purpose",
+      "distracted",
+      "restless",
+      "easilyDistracted",
+      "worried",
+      "concentration",
+      "comparison",
+      "comparisonFeelings",
+      "validation",
+      "depression",
+      "interests",
+      "sleep",
+      "location"
+    )
+    .from("user")
+    .where("userID", req.params.userNum)
+    .then((user) => {
+      res.render("viewData", { mydata: user });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+});
 
 app.listen(port, () => console.log("Server is Listening")); //last line!!
