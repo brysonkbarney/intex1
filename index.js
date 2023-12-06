@@ -113,7 +113,6 @@ app.get("/login", (req, res) => {
   res.render("login", { isLoggedIn: isLoggedIn }); // Pass the logged-in status to the EJS template
 });
 
-
 //Get Request for creating an account in our login page.
 //add account user name and password to our account table
 
@@ -288,5 +287,42 @@ app.get("/viewData", (req, res) => {
     );
   }
 }); // This is where the closing parenthesis should be
+
+//get request for a single record
+app.get("/searchData/:userNum", (req, res) => {
+  knex
+    .select(
+      "userID",
+      "timestamp",
+      "age",
+      "gender",
+      "relationshipStatus",
+      "occupationStatus",
+      "socialMediaUsage",
+      "avgDailyTime",
+      "purpose",
+      "distracted",
+      "restless",
+      "easilyDistracted",
+      "worried",
+      "concentration",
+      "comparison",
+      "comparisonFeelings",
+      "validation",
+      "depression",
+      "interests",
+      "sleep",
+      "location"
+    )
+    .from("user")
+    .where("userID", req.params.userNum)
+    .then((user) => {
+      res.render("viewData", { mydata: user });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ err });
+    });
+});
 
 app.listen(port, () => console.log("Server is Listening")); //last line!!
