@@ -10,18 +10,19 @@ app.set("view engine", "ejs"); //using ejs for our files.
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-const session = require('express-session');
+const session = require("express-session");
 
 // Configure express-session
-app.use(session({
-  secret: 'provomediaimpact', // You should use a long, random string in production
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using https
-}));
-
+app.use(
+  session({
+    secret: "provomediaimpact", // You should use a long, random string in production
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Set to true if using https
+  })
+);
 
 const knex = require("knex")({
   client: "pg",
@@ -42,51 +43,56 @@ app.get("/", (req, res) => {
 
 //adding users to the data table
 app.post("/storeLogin", (req, res) => {
-    const { userName, password } = req.body; // Make sure these names match your form input names
-  
-    knex("login")
-      .insert({
-        userName: userName, // This should match the column name in your database
-        password: password,
-      })
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
-      });
-  });
-  
+  const { userName, password } = req.body; // Make sure these names match your form input names
+
+  knex("login")
+    .insert({
+      userName: userName, // This should match the column name in your database
+      password: password,
+    })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    });
+});
 
 //searching the table for matches
 // index.js
 // index.js
 app.post("/findLogin", async (req, res) => {
-    // Use 'username' and 'password' to match the form input names
-    const { username, password } = req.body;
+  // Use 'username' and 'password' to match the form input names
+  const { username, password } = req.body;
 
-    console.log("Received body:", req.body);
-    console.log("Extracted username:", username);
-    console.log("Extracted password:", password);
+  console.log("Received body:", req.body);
+  console.log("Extracted username:", username);
+  console.log("Extracted password:", password);
 
-    try {
-        // Ensure the column name matches the database column name
-        const user = await knex.select('*').from('login').where({
-            'userName': username, // Column name in database: 'userName'
-            password: password
-        }).first();
+  try {
+    // Ensure the column name matches the database column name
+    const user = await knex
+      .select("*")
+      .from("login")
+      .where({
+        userName: username, // Column name in database: 'userName'
+        password: password,
+      })
+      .first();
 
-        if (user) {
-            req.session.loggedIn = true;
-            res.send('<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>');
-        } else {
-            res.status(401).send('Invalid credentials');
-        }
-    } catch (error) {
-        console.error("Error details:", error);
-        res.status(500).send("An error occurred during login.");
+    if (user) {
+      req.session.loggedIn = true;
+      res.send(
+        '<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>'
+      );
+    } else {
+      res.status(401).send("Invalid credentials");
     }
+  } catch (error) {
+    console.error("Error details:", error);
+    res.status(500).send("An error occurred during login.");
+  }
 });
 
 //Get request for the login page
@@ -112,8 +118,8 @@ app.get("/addData", (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-    res.render("create"); // This will render the addData.ejs file
-  });
+  res.render("create"); // This will render the addData.ejs file
+});
 
 const organizationMapping = {
   University: 1,
@@ -232,44 +238,45 @@ app.get("/dashboard", (req, res) => {
 //Get request for the view all data page
 //Get request for the view all data page
 app.get("/viewData", (req, res) => {
-    if (req.session.loggedIn) {
-      knex
-        .select(
-          "userID",
-          "timestamp",
-          "age",
-          "gender",
-          "relationshipStatus",
-          "occupationStatus",
-          "socialMediaUsage",
-          "avgDailyTime",
-          "purpose",
-          "distracted",
-          "restless",
-          "easilyDistracted",
-          "worried",
-          "concentration",
-          "comparison",
-          "comparisonFeelings",
-          "validation",
-          "depression",
-          "interests",
-          "sleep",
-          "location"
-        )
-        .from("user")
-        .then((user) => {
-          res.render("viewData", { mydata: user });
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json({ err });
-        });
-    } else {
-      // User is not logged in, redirect to login page with an alert
-      res.send('<script>alert("Login first to view data"); window.location.href = "/login"; </script>');
-    }
-  }); // This is where the closing parenthesis should be
-  
+  if (req.session.loggedIn) {
+    knex
+      .select(
+        "userID",
+        "timestamp",
+        "age",
+        "gender",
+        "relationshipStatus",
+        "occupationStatus",
+        "socialMediaUsage",
+        "avgDailyTime",
+        "purpose",
+        "distracted",
+        "restless",
+        "easilyDistracted",
+        "worried",
+        "concentration",
+        "comparison",
+        "comparisonFeelings",
+        "validation",
+        "depression",
+        "interests",
+        "sleep",
+        "location"
+      )
+      .from("user")
+      .then((user) => {
+        res.render("viewData", { mydata: user });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err });
+      });
+  } else {
+    // User is not logged in, redirect to login page with an alert
+    res.send(
+      '<script>alert("Login first to view data"); window.location.href = "/login"; </script>'
+    );
+  }
+}); // This is where the closing parenthesis should be
 
 app.listen(port, () => console.log("Server is Listening")); //last line!!
