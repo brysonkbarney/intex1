@@ -81,7 +81,8 @@
       <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
         <form action="/editLogin" method="post"
           style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
-          <h2>Edit Account</h2>
+          <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Update your username and
+            password below</p>
           <label for="login-username">Username:</label><br>
           <input type="text" id="login-username" name="username" value="<%= userinfo.username %>" required
             style="width: 100%; margin-bottom: 10px" ; required><br>
@@ -90,7 +91,11 @@
           <input type="password" id="login-password" name="password" value="<%= userinfo.password %>" required
             style="width: 100%; margin-bottom: 10px;" required><br>
           <br>
-          <button type="submit" style="width: 50%;">Create</button>
+          <div style="display: flex; justify-content: center;">
+            <button type="submit"
+              style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Update</button>
+          </div>
+
         </form>
       </div>
 
