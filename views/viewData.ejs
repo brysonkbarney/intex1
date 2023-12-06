@@ -2,96 +2,115 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Provo Media Impact</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>Provo Media Impact</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/circleNoBackground.png" rel="icon">
-  <link href="assets/img/circleNoBackground.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/circleNoBackground.png" rel="icon">
+    <link href="assets/img/circleNoBackground.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
+    <!-- =======================================================
   * Template Name: Nova
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
   * Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-    .table-container {
-        display: flex;
-        justify-content: center;
-        padding: 0px;
-        width: 100%;
-    }
-    .scrollable-table {
-        overflow-x: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-        max-width: 97%; /* Adjust this value as needed */
-    }
-    #userTable {
-        width: 100%;
-        background-color: antiquewhite;
-    }
-    #userTable thead {
-        background-color: cornflowerblue; 
-        color: white;
-    }
-    #userTable th, #userTable td {
-        text-align: left;
-        padding: 8px;
-    }
-    #userTable tbody {
-        font-family: Arial; 
-        font-size: 9pt;
-    }
-</style>
+    <style>
+        .table-container {
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            width: 100%;
+        }
+
+        .scrollable-table {
+            overflow-x: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 97%;
+            /* Adjust this value as needed */
+        }
+
+        #userTable {
+            width: 100%;
+            background-color: antiquewhite;
+        }
+
+        #userTable thead {
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+        #userTable th,
+        #userTable td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        #userTable tbody {
+            font-family: Arial;
+            font-size: 9pt;
+        }
+    </style>
 </head>
 
 <body style="background-color: #1b2f45">
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-    
-          <a href="index.html" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="assets/img/provoLogo.png" alt="">
-            <!--<h1 class="d-flex align-items-center">Nova</h1>-->
-          </a>
-    
-          <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-          <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a href="/" class="active">Home</a></li>
-              <li><a href="/addData">Survey</a></li>
-              <li><a href="/dashboard">Insights</a></li>
-              <li><a href="/viewData">All Data</a></li>
-              <li><a href="/login">Account</a></li>
-            </ul>
-          </nav><!-- .navbar -->
-    
+
+            <a href="index.html" class="logo d-flex align-items-center">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="assets/img/provoLogo.png" alt="">
+                <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+            </a>
+
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/addData">Survey</a></li>
+                    <li><a href="/dashboard">Explore</a></li>
+                    <li><a href="/viewData">All Data</a></li>
+                    <li><a href="/login">Account</a></li>
+                </ul>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+        <div class="container position-relative d-flex flex-column align-items-center">
+            <h2>View Survey Results</h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>Survey Results</li>
+            </ol>
         </div>
       </header><!-- End Header -->
 <!-- ======= Breadcrumbs ======= -->
@@ -105,6 +124,7 @@
         </ol>
     </div>
 </div>
+
 <br>
 <form action="/viewData" method="GET">
     <select name="userId">
@@ -118,9 +138,6 @@
 <form action="/viewData" method="GET">
     <button type="submit">View All Users</button>
 </form>
-
-<br>
-
 
 <div style="display: flex; justify-content: center; align-items: center;">
     <form action="/viewData" method="GET" style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
@@ -185,13 +202,88 @@
                                 <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].sleep %></td>
                                 <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].location %></td>
                             </tr>
-                        <% } %>
+                        </thead>
+                        <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
+                            <% for (let iCount=0; iCount < mydata.length; iCount++) { %>
+
+                                <tr>
+                                    <td>
+                                        <%= mydata[iCount].userID %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].timestamp %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].age %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].gender %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].relationshipStatus %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].occupationStatus %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].organizationAffiliation %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].socialMediaUsage %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].socialMediaPlatforms %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].avgDailyTime %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].purpose %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].distracted %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].restless %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].easilyDistracted %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].worried %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].concentration %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].comparison %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].comparisonFeelings %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].validation %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].depression %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].interests %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].sleep %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].location %>
+                                    </td>
+                                </tr>
+                                <% } %>
                         </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
-    </form> 
-</div>
+        </form>
+    </div>
     <br>
     <!--Button to expand rows-->
     <!-- <button id="toggleButton" onclick="toggleRows('userTable', 'userTableBody')">Show All Rows</button> --
@@ -201,16 +293,5 @@
     </script>-->
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
