@@ -50,7 +50,7 @@
 
 </head>
 
-<body class="page-about">
+<body class="page-about" style="background-color: #1b2f45; padding-bottom: 50px;">
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -93,13 +93,12 @@
       </div>
     </div><!-- End Breadcrumbs -->
     <br>
-    <fieldset>
-        <div class="section-header">
+    <form action="/storeData" method="POST" style="padding: 20px; background-color: white; border-radius: 10px; max-width: 1000px; width: 100%; box-sizing: border-box; margin: auto;">
+      <div class="section-header">
         <h2>Join the Provo Media Survey</h2>
             <p>Join Provo's effort to enhance mental health in our digital world. Your input in the Provo Media Survey offers key insights on social media's impact on our community. Help us create a supportive online space and manage the complexities of digital life. Click to contribute and support a healthier Provo.</p>
         </div>
       
-      <form action="/storeData" method="POST">
           <label for="age">Age:</label>
           <input type="number" id="age" name="age" required min="12" max="99">
           <br><br>
@@ -232,7 +231,6 @@
               <br><br>
           <br><button type="submit">Submit</button><br>
       </form>
-    </fieldset>
 </body>
 
 </html>
