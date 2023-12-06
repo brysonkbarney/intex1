@@ -112,61 +112,96 @@
                 <li>Survey Results</li>
             </ol>
         </div>
+      </header><!-- End Header -->
+<!-- ======= Breadcrumbs ======= -->
+<br><br>
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center">
+        <h2>View Survey Results</h2>
+        <ol>
+            <li><a href="/">Home</a></li>
+            <li>Survey Results</li>
+        </ol>
     </div>
-    <br><br><br>
+</div>
 
-    <div style="display: flex; justify-content: center; align-items: center;">
-        <form action="/viewData" method="GET"
-            style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
-            <div class="table-container">
-                <div class="scrollable-table">
-                    <table id="userTable">
-                        <thead style="background-color: cornflowerblue;">
-                            <tr style="border-bottom: 2px solid white;">
-                                <th colspan="10" style="text-align: center; border-right: 1px solid white;">General User
-                                    Information</th>
-                                <th colspan="13" style="text-align: center; border-right: 1px solid white;">The
-                                    following statements, are rated on a number between 1-5 with 1 being "Strongly
-                                    Disagree" and 5 being "Strongly Agree".</th>
-                            </tr>
+<br>
+<form action="/viewData" method="GET">
+    <select name="userId">
+        <option value="">Select User ID</option>
+        <% mydata.forEach(function(user) { %>
+            <option value="<%= user.userID %>"><%= user.userID %></option>
+        <% }); %>
+    </select>
+    <button type="submit">Filter</button>
+</form>
+<form action="/viewData" method="GET">
+    <button type="submit">View All Users</button>
+</form>
+<br>
+
+<div style="display: flex; justify-content: center; align-items: center;">
+    <form action="/viewData" method="GET" style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
+        <div class="table-container">
+            <div class="scrollable-table">
+                <table id="userTable">
+                    <thead style="background-color: cornflowerblue;">
+                        <tr style="border-bottom: 2px solid white;">
+                            <th colspan="10" style="text-align: center; border-right: 1px solid white;">General User Information</th>
+                            <th colspan="13" style="text-align: center; border-right: 1px solid white;">The following statements, are rated on a number between 1-5 with 1 being "Strongly Disagree" and 5 being "Strongly Agree".</th>
+                        </tr>
+                        <tr>
+                            <th style="text-align: left; border-right: 1px solid white;">User ID</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Time</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Age</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Gender</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Relationship Status</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Occupation Status</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Affliated Organizations</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Social Media</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Social Media Platforms Used</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Average time on Social Media Daily</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I often use social media without a specific purpose</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I get distracted by social media when I am busy doing something</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I feel restless when I haven't used social media in a while</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I am easily distracted</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I am bothered by worries</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I find it difficult to concentrate on things</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I compare myself to other successful people through the use of social media</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Following the previous statement, I generally feel strongly about these comparisons</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I often look to seek validation from features of social media</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I feel depressed or down.</th>
+                            <th style="text-align: left; border-right: 1px solid white;">My interest in daily activities fluctuates frequently</th>
+                            <th style="text-align: left; border-right: 1px solid white;">I face issues regarding sleep</th>
+                            <th style="text-align: left; border-right: 1px solid white;">Location</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
+                        <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
                             <tr>
-                                <th style="text-align: left; border-right: 1px solid white;">User ID</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Time</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Age</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Gender</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Relationship Status</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Occupation Status</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Affliated Organizations
-                                </th>
-                                <th style="text-align: left; border-right: 1px solid white;">Social Media</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Social Media Platforms Used
-                                </th>
-                                <th style="text-align: left; border-right: 1px solid white;">Average time on Social
-                                    Media Daily</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I often use social media
-                                    without a specific purpose</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I get distracted by social
-                                    media when I am busy doing something</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I feel restless when I
-                                    haven't used social media in a while</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I am easily distracted</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I am bothered by worries
-                                </th>
-                                <th style="text-align: left; border-right: 1px solid white;">I find it difficult to
-                                    concentrate on things</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I compare myself to other
-                                    successful people through the use of social media</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Following the previous
-                                    statement, I generally feel strongly about these comparisons</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I often look to seek
-                                    validation from features of social media</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I feel depressed or down.
-                                </th>
-                                <th style="text-align: left; border-right: 1px solid white;">My interest in daily
-                                    activities fluctuates frequently</th>
-                                <th style="text-align: left; border-right: 1px solid white;">I face issues regarding
-                                    sleep</th>
-                                <th style="text-align: left; border-right: 1px solid white;">Location</th>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].userID %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].timestamp %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].age %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].gender %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].relationshipStatus %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].occupationStatus %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].organizationAffiliation %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaUsage %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaPlatforms %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].avgDailyTime %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].purpose %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].distracted %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].restless %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].easilyDistracted %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].worried %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].concentration %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparison %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparisonFeelings %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].validation %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].depression %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].interests %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].sleep %></td>
+                                <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].location %></td>
                             </tr>
                         </thead>
                         <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">

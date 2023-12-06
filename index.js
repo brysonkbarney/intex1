@@ -265,68 +265,76 @@ app.get("/dashboard", (req, res) => {
 //Get request for the view all data page
 //Get request for the view all data page
 app.get("/viewData", (req, res) => {
-  knex
-    .select(
-      "u.userID",
-      "timestamp",
-      "age",
-      "gender",
-      "relationshipStatus",
-      "occupationStatus",
-      knex.raw('STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'),
-      "socialMediaUsage",
-      knex.raw('STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'),
-      "avgDailyTime",
-      "purpose",
-      "distracted",
-      "restless",
-      "easilyDistracted",
-      "worried",
-      "concentration",
-      "comparison",
-      "comparisonFeelings",
-      "validation",
-      "depression",
-      "interests",
-      "sleep",
-      "location"
-    )
-    .from({ u: "user" })
-    .innerJoin("user_platform as up", "u.userID", "up.userID")
-    .innerJoin("platform as pf", "up.platformNum", "pf.platformNum")
-    .innerJoin("user_organization as uo", "u.userID", "uo.userID")
-    .innerJoin("organization as o", "uo.organizationNum", "o.organizationNum")
-    .groupBy(
-      "u.userID",
-      "timestamp",
-      "age",
-      "gender",
-      "relationshipStatus",
-      "occupationStatus",
-      "socialMediaUsage",
-      "avgDailyTime",
-      "purpose",
-      "distracted",
-      "restless",
-      "easilyDistracted",
-      "worried",
-      "concentration",
-      "comparison",
-      "comparisonFeelings",
-      "validation",
-      "depression",
-      "interests",
-      "sleep",
-      "location"
-    )
-    .then((user) => {
-      res.render("viewData", { mydata: user });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
+  let query = knex
+      .select(
+          "u.userID",
+          "timestamp",
+          "age",
+          "gender",
+          "relationshipStatus",
+          "occupationStatus",
+          knex.raw('STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'),
+          "socialMediaUsage",
+          knex.raw('STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'),
+          "avgDailyTime",
+          "purpose",
+          "distracted",
+          "restless",
+          "easilyDistracted",
+          "worried",
+          "concentration",
+          "comparison",
+          "comparisonFeelings",
+          "validation",
+          "depression",
+          "interests",
+          "sleep",
+          "location"
+      )
+      .from({ u: "user" })
+      .innerJoin("user_platform as up", "u.userID", "up.userID")
+      .innerJoin("platform as pf", "up.platformNum", "pf.platformNum")
+      .innerJoin("user_organization as uo", "u.userID", "uo.userID")
+      .innerJoin("organization as o", "uo.organizationNum", "o.organizationNum")
+      .groupBy(
+          "u.userID",
+          "timestamp",
+          "age",
+          "gender",
+          "relationshipStatus",
+          "occupationStatus",
+          "socialMediaUsage",
+          "avgDailyTime",
+          "purpose",
+          "distracted",
+          "restless",
+          "easilyDistracted",
+          "worried",
+          "concentration",
+          "comparison",
+          "comparisonFeelings",
+          "validation",
+          "depression",
+          "interests",
+          "sleep",
+          "location"
+      );
+
+  // Check if userId parameter is present
+  if (req.query.userId && req.query.userId.trim() !== '') {
+      query = query.where("u.userID", req.query.userId);
+  }
+
+  query
+      .then((userData) => {
+          res.render("viewData", { mydata: userData });
+      })
+      .catch((err) => {
+          console.log(err);
+          res.status(500).json({ err });
+      });
 });
+
 
 //get request for a single record
 app.get("/searchData/:userNum", (req, res) => {
