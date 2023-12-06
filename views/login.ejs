@@ -79,6 +79,14 @@
     <!-- Verify Login Form -->
     <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
         <form action="/findLogin" method="post" style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
+            <% if (loggedIn) { %>
+            <!-- Enable the button if loggedIn is true -->
+            <button type="submit">Create Account</button>
+            <% } else { %>
+                <!-- Disable the button if loggedIn is false -->
+                <button type="button" disabled>Create Account</button>
+                <p>Please log in to create an account.</p>
+                <% } %>
             <h2>Login</h2>
             <label for="verify-username">Username:</label><br>
             <input type="text" id="verify-username" name="username" required style="width: 100%; margin-bottom: 10px;"><br>
@@ -94,6 +102,7 @@
     </div>
     
     <br><br>
+
 </body>
 
 </html>

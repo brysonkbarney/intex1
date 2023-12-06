@@ -12,17 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-// const session = require("express-session");
+const session = require("express-session");
 
-// // Configure express-session
-// app.use(
-//   session({
-//     secret: "provomediaimpact", // You should use a long, random string in production
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false }, // Set to true if using https
-//   })
-// );
+// Use sessions
+app.use(
+  session({
+    secret: "provo",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 const knex = require("knex")({
   client: "pg",
@@ -43,11 +42,11 @@ app.get("/", (req, res) => {
 
 //adding users to the data table
 app.post("/storeLogin", (req, res) => {
-  const { userName, password } = req.body; // Make sure these names match your form input names
+  const { username, password } = req.body; // Make sure these names match your form input names
 
   knex("login")
     .insert({
-      userName: userName, // This should match the column name in your database
+      username: username, // This should match the column name in your database
       password: password,
     })
     .then(() => {
@@ -59,34 +58,32 @@ app.post("/storeLogin", (req, res) => {
     });
 });
 
-//searching the table for matches
-// index.js
-// index.js
 app.post("/findLogin", async (req, res) => {
-  // Use 'username' and 'password' to match the form input names
   const { username, password } = req.body;
-
-  console.log("Received body:", req.body);
-  console.log("Extracted username:", username);
-  console.log("Extracted password:", password);
+  console.log(username);
+  console.log(password);
 
   try {
-    // Ensure the column name matches the database column name
-    const user = await knex
+    const user = await knex("login")
       .select("*")
-      .from("login")
       .where({
-        userName: username, // Column name in database: 'userName'
+        username: username,
         password: password,
       })
       .first();
 
     if (user) {
+      console.log(user);
+      console.log("Logging In");
+
+      // Store user information and loggedIn status in session
+      req.session.userInfo = user;
       req.session.loggedIn = true;
-      res.send(
-        '<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>'
-      );
+
+      // Pass the loggedIn status to the login template
+      res.render("login", { userInfo: user, loggedIn: req.session.loggedIn });
     } else {
+      console.log("Invalid credentials");
       res.status(401).send("Invalid credentials");
     }
   } catch (error) {
@@ -101,7 +98,11 @@ app.get("/login", (req, res) => {
     .select()
     .from("login")
     .then((login) => {
-      res.render("login.ejs", { allLogins: login });
+      // Pass the loggedIn status to the login template
+      res.render("login.ejs", {
+        allLogins: login,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
