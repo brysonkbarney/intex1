@@ -13,24 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const session = require("express-session");
-app.use(express.json())
-//const RedisStore = require('connect-redis')(session);
-//const redis = require('redis');
+app.use(express.json());
 
-//let redisClient = redis.createClient({
-    //host: 'your-redis-server-host',
-    //port: your-redis-server-port
-    // If you have a password, include it here
-//});
 // Configure express-session
 app.use(
   session({
-  //store: new RedisStore({ client: redisClient }),
-  secret: "provomediaimpact", // You should use a long, random string in production
-  resave: false,
-  saveUninitialized: true,
-  //cookie: { secure: false }, // Set to true if using https
- })
+    secret: "provomediaimpact", // You should use a long, random string in production
+    resave: false,
+    saveUninitialized: true,
+    //cookie: { secure: false }, // Set to true if using https
+  })
 );
 
 const knex = require("knex")({
@@ -69,8 +61,6 @@ app.post("/storeLogin", (req, res) => {
 });
 
 //searching the table for matches
-// index.js
-// index.js
 app.post("/findLogin", async (req, res) => {
   // Use 'username' and 'password' to match the form input names
   const { username, password } = req.body;
@@ -99,7 +89,8 @@ app.post("/findLogin", async (req, res) => {
     } else {
       res.send(
         '<script>alert("Login Credentials Invalid!"); window.location.href = "/login"; </script>'
-)}
+      );
+    }
   } catch (error) {
     console.error("Error details:", error);
     res.status(500).send("An error occurred during login.");
@@ -107,14 +98,11 @@ app.post("/findLogin", async (req, res) => {
 });
 
 //Get request for the login page
-//Get request for the login page
 app.get("/login", (req, res) => {
   const isLoggedIn = req.session.loggedIn || false; // Check if user is logged in
   res.render("login", { isLoggedIn: isLoggedIn }); // Pass the logged-in status to the EJS template
 });
 
-//Get Request for creating an account in our login page.
-//add account user name and password to our account table
 
 // Get request for the add data page
 app.get("/addData", (req, res) => {
@@ -126,7 +114,41 @@ app.get("/create", (req, res) => {
 });
 
 app.get("/editLogin", (req, res) => {
-  res.render("editLogin"); // This will render the addData.ejs file
+  console.log("------Testing------");
+
+  // Ensure req.session.userInfo is defined
+  if (!req.session.userInfo) {
+    // Redirect or handle the case where userinfo is not defined
+    res.redirect("/login"); // You may want to redirect to the login page or handle it in a different way
+    return;
+  }
+
+  console.log(req.session.userInfo.username);
+  console.log(req.session.userInfo.password);
+  res.render("editLogin", { userinfo: req.session.userInfo }); // Pass userinfo to the template
+});
+
+app.post("/editLogin", (req, res) => {
+  const { username, password } = req.body;
+
+  knex("login")
+    .where("username", req.session.userInfo.username)
+    .update({
+      username: username, // Updated with the new username from the form
+      password: password,
+    })
+    .then(() => {
+      // Update the session with the new username if it was changed
+      if (username !== req.session.userInfo.username) {
+        req.session.userInfo.username = username;
+      }
+
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    });
 });
 
 const organizationMapping = {
