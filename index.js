@@ -12,17 +12,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-const session = require("express-session");
+// const session = require("express-session");
 
-// Configure express-session
-app.use(
-  session({
-    secret: "provomediaimpact", // You should use a long, random string in production
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, // Set to true if using https
-  })
-);
+// // Configure express-session
+// app.use(
+//   session({
+//     secret: "provomediaimpact", // You should use a long, random string in production
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { secure: false }, // Set to true if using https
+//   })
+// );
 
 const knex = require("knex")({
   client: "pg",
