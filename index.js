@@ -12,6 +12,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
+const session = require('express-session');
+
+// Configure express-session
+app.use(session({
+  secret: 'provomediaimpact', // You should use a long, random string in production
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using https
+}));
+
+
 const knex = require("knex")({
   client: "pg",
   connection: {
@@ -67,6 +78,7 @@ app.post("/findLogin", async (req, res) => {
         }).first();
 
         if (user) {
+            req.session.loggedIn = true;
             res.send('<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>');
         } else {
             res.status(401).send('Invalid credentials');
@@ -218,39 +230,46 @@ app.get("/dashboard", (req, res) => {
 });
 
 //Get request for the view all data page
+//Get request for the view all data page
 app.get("/viewData", (req, res) => {
-  knex
-    .select(
-      "userID",
-      "timestamp",
-      "age",
-      "gender",
-      "relationshipStatus",
-      "occupationStatus",
-      "socialMediaUsage",
-      "avgDailyTime",
-      "purpose",
-      "distracted",
-      "restless",
-      "easilyDistracted",
-      "worried",
-      "concentration",
-      "comparison",
-      "comparisonFeelings",
-      "validation",
-      "depression",
-      "interests",
-      "sleep",
-      "location"
-    )
-    .from("user")
-    .then((user) => {
-      res.render("viewData", { mydata: user });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
-});
+    if (req.session.loggedIn) {
+      knex
+        .select(
+          "userID",
+          "timestamp",
+          "age",
+          "gender",
+          "relationshipStatus",
+          "occupationStatus",
+          "socialMediaUsage",
+          "avgDailyTime",
+          "purpose",
+          "distracted",
+          "restless",
+          "easilyDistracted",
+          "worried",
+          "concentration",
+          "comparison",
+          "comparisonFeelings",
+          "validation",
+          "depression",
+          "interests",
+          "sleep",
+          "location"
+        )
+        .from("user")
+        .then((user) => {
+          res.render("viewData", { mydata: user });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ err });
+        });
+    } else {
+      // User is not logged in, redirect to login page with an alert
+      res.send('<script>alert("Login first to view data"); window.location.href = "/login"; </script>');
+    }
+  }); // This is where the closing parenthesis should be
+  
 
 app.listen(port, () => console.log("Server is Listening")); //last line!!
