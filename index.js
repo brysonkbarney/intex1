@@ -247,7 +247,9 @@ app.post("/storeData", async (req, res) => {
           }
 
           await trx.commit();
-          res.send("Record added successfully. Thank you for your response.");
+          res.send(
+            '<script>alert("Thank you for your response! Your record was added sucsessfully."); window.location.href = "/"; </script>'
+          );
       });
   } catch (error) {
       console.error("Error details:", error);
