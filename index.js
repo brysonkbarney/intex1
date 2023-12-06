@@ -126,6 +126,10 @@ app.get("/create", (req, res) => {
   res.render("create"); // This will render the addData.ejs file
 });
 
+app.get("/editLogin", (req, res) => {
+  res.render("editLogin"); // This will render the addData.ejs file
+});
+
 const organizationMapping = {
   University: 1,
   Government: 2,

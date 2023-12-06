@@ -59,7 +59,7 @@
                     <li><a href="/addData">Survey</a></li>
                     <li><a href="/dashboard">Insights</a></li>
                     <li><a href="/viewData">All Data</a></li>
-                    <li><a href="/login">Login/Create Account</a></li>
+                    <li><a href="/login">Account</a></li>
                 </ul>
             </nav><!-- .navbar -->
 
@@ -91,11 +91,17 @@
             <button type="submit" style="width: 50%;">Login</button>
             <br><br>
             <% if (isLoggedIn) { %>
+              <p style="font-size: 14px;"><a href='/editLogin'>Click here to Edit your account</a></p>
+          <% } else { %>
+              <p style="font-size: 14px;" class="disabled-link">Edit Account (Login Required)</p>
+          <% } %>
+            <% if (isLoggedIn) { %>
               <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a></p>
           <% } else { %>
               <p style="font-size: 14px;" class="disabled-link">Create Account (Login Required)</p>
+              <p style="font-size: 10px;">*To create an account, you must be logged in with Admin or Personal credentials.</p>
           <% } %>
-          <p style="font-size: 10px;">*To create an account, you must be logged in with Admin or Personal credentials.</p>
+
         </form>
     </div>
 
