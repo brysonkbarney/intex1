@@ -152,114 +152,108 @@ app.post("/editLogin", (req, res) => {
 });
 
 const organizationMapping = {
-  University: 1,
-  Government: 2,
-  School: 3,
-  Company: 4,
-  Private: 5,
-  None: 6, // Assuming 'none' or 'N/A' is represented in your form and maps to 6
+  'university': 1,
+  'government': 2,
+  'school': 3,
+  'company': 4,
+  'private': 5,
+  'none': 6 // Assuming 'none' or 'N/A' is represented in your form and maps to 6
 };
 
 const platformMapping = {
-  Twitter: 1,
-  Youtube: 2,
-  Facebook: 3,
-  Reddit: 4,
-  Discord: 5,
-  Pinterest: 6,
-  Instagram: 7,
-  Snapchat: 8,
-  TikTok: 9,
-  None: 10,
+  'twitter': 1,
+  'youtube': 2,
+  'facebook': 3,
+  'reddit': 4,
+  'discord': 5,
+  'pinterest': 6,
+  'instagram': 7,
+  'snapchat': 8,
+  'tiktok': 9
 };
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
-  const {
-    age,
-    gender,
-    relationshipStatus,
-    occupationStatus,
-    organizations,
-    platforms,
-    socialMediaUsage,
-    avgDailyTime,
-    purpose,
-    distracted,
-    restless,
-    easilyDistracted,
-    worried,
-    concentration,
-    comparison,
-    comparisonFeelings,
-    validation,
-    depression,
-    interests,
-    sleep,
+  const { 
+      age, 
+      gender, 
+      relationshipStatus, 
+      occupationStatus, 
+      organizations, 
+      platforms, 
+      socialMediaUsage, 
+      avgDailyTime, 
+      purpose, 
+      distracted, 
+      restless, 
+      easilyDistracted, 
+      worried, 
+      concentration, 
+      comparison, 
+      comparisonFeelings, 
+      validation, 
+      depression, 
+      interests, 
+      sleep, 
+      location
   } = req.body;
-
+  
   try {
-    await knex.transaction(async (trx) => {
-      const currentTimestamp = new Date();
-      const location = "Provo"; // Set location to 'Provo'
-      const [userInsertResult] = await trx("user")
-        .insert({
-          timestamp: currentTimestamp, // Include this line
-          age,
-          gender,
-          relationshipStatus,
-          occupationStatus,
-          location,
-          socialMediaUsage,
-          avgDailyTime,
-          purpose,
-          distracted,
-          restless,
-          easilyDistracted,
-          worried,
-          concentration,
-          comparison,
-          comparisonFeelings,
-          validation,
-          depression,
-          interests,
-          sleep,
-        })
-        .returning("userID");
+      await knex.transaction(async trx => {
+          const currentTimestamp = new Date();
+          const location = 'Provo'; // Set location to 'Provo'
+          const [userInsertResult] = await trx('user').insert({
+              timestamp: currentTimestamp, // Include this line
+              age,
+              gender,
+              relationshipStatus,
+              occupationStatus,
+              location,
+              socialMediaUsage, 
+              avgDailyTime, 
+              purpose, 
+              distracted, 
+              restless, 
+              easilyDistracted, 
+              worried, 
+              concentration, 
+              comparison, 
+              comparisonFeelings, 
+              validation, 
+              depression, 
+              interests, 
+              sleep
+          }).returning('userID');
 
-      const userId = userInsertResult.userID;
+          const userId = userInsertResult.userID;
 
-      // Inserting into user_organization
-      if (organizations) {
-        const userOrganizations = Array.isArray(organizations)
-          ? organizations
-          : [organizations];
-        const organizationInserts = userOrganizations.map((orgName) => ({
-          userID: userId,
-          organizationNum: organizationMapping[orgName],
-        }));
-        await trx("user_organization").insert(organizationInserts);
-      }
+          // Inserting into user_organization
+          if (organizations) {
+              const userOrganizations = Array.isArray(organizations) ? organizations : [organizations];
+              const organizationInserts = userOrganizations.map(orgName => ({
+                  userID: userId,
+                  organizationNum: organizationMapping[orgName]
+              }));
+              await trx('user_organization').insert(organizationInserts);
+          }
 
-      // Inserting into user_platform
-      if (platforms) {
-        const userPlatforms = Array.isArray(platforms)
-          ? platforms
-          : [platforms];
-        const platformInserts = userPlatforms.map((platformName) => ({
-          userID: userId,
-          platformNum: platformMapping[platformName],
-        }));
-        await trx("user_platform").insert(platformInserts);
-      }
+          // Inserting into user_platform
+          if (platforms) {
+              const userPlatforms = Array.isArray(platforms) ? platforms : [platforms];
+              const platformInserts = userPlatforms.map(platformName => ({
+                  userID: userId,
+                  platformNum: platformMapping[platformName]
+              }));
+              await trx('user_platform').insert(platformInserts);
+          }
 
-      await trx.commit();
-      res.send("Record added successfully. Thank you for your response.");
-    });
+          await trx.commit();
+          res.send("Record added successfully. Thank you for your response.");
+      });
   } catch (error) {
-    console.error("Error details:", error);
-    res.status(500).send("Failed to store data");
+      console.error("Error details:", error);
+      res.status(500).send("Failed to store data");
   }
-});
+}); 
 
 //Get request for the dashboard
 app.get("/dashboard", (req, res) => {
