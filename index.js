@@ -13,14 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const session = require("express-session");
+app.use(express.json())
+//const RedisStore = require('connect-redis')(session);
+//const redis = require('redis');
 
+//let redisClient = redis.createClient({
+    //host: 'your-redis-server-host',
+    //port: your-redis-server-port
+    // If you have a password, include it here
+//});
 // Configure express-session
 app.use(
   session({
+  //store: new RedisStore({ client: redisClient }),
   secret: "provomediaimpact", // You should use a long, random string in production
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }, // Set to true if using https
+  //cookie: { secure: false }, // Set to true if using https
  })
 );
 
