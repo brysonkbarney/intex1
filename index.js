@@ -43,11 +43,11 @@ app.get("/", (req, res) => {
 
 //adding users to the data table
 app.post("/storeLogin", (req, res) => {
-  const { userName, password } = req.body; // Make sure these names match your form input names
+  const { username, password } = req.body; // Make sure these names match your form input names
 
   knex("login")
     .insert({
-      userName: userName, // This should match the column name in your database
+      username: username, // This should match the column name in your database
       password: password,
     })
     .then(() => {
@@ -76,7 +76,7 @@ app.post("/findLogin", async (req, res) => {
       .select("*")
       .from("login")
       .where({
-        userName: username, // Column name in database: 'userName'
+        username: username, // Column name in database: 'userName'
         password: password,
       })
       .first();
