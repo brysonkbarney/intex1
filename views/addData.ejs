@@ -1,13 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Nova Bootstrap Template - About</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Nova
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
-<body>
-    <h1>Welcome to our Add Data Page!</h1>
+
+<body class="page-about">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/provoLogo.png" alt="">
+        <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/addData">Survey</a></li>
+          <li><a href="/dashboard">Insights</a></li>
+          <li><a href="/viewData">All Data</a></li>
+          <li><a href="/login">Login/Create Account</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center">
+
+        <h2>Survey</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Survey</li>
+        </ol>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+    <br>
+        <div class="section-header">
+        <h2>Join the Provo Media Survey</h2>
+            <p>Join Provo's effort to enhance mental health in our digital world. Your input in the Provo Media Survey offers key insights on social media's impact on our community. Help us create a supportive online space and manage the complexities of digital life. Click to contribute and support a healthier Provo.</p>
+        </div>
+
     <form action="/storeData" method="POST">
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" required min="12" max="99">
@@ -18,10 +96,10 @@
         <input type="radio" id="genderFemale" name="gender" value="Female">
         <label for="genderFemale">Female</label><br>
         <input type="radio" id="genderOther" name="gender" value="Other">
-        <label for="genderOther">Other (Prefer not to Identify)</label>
+        <label for="genderOther">Other (Prefer not to Identify)</label><br>
         <br><br>
         <label for="relationshipStatus">Relationship Status:</label>
-        <select id="relationshipStatus" name="relationshipStatus" required>
+        <select id="relationshipStatus" name="relationshipStatus">
             <option value="single">Single</option>
             <option value="inRelationship">In a Relationship</option>
             <option value="married">Married</option>
@@ -29,7 +107,7 @@
         </select>
         <br><br>
         <label for="occupationStatus">Occupation Status:</label>
-        <select id="occupationStatus" name="occupationStatus" required>
+        <select id="occupationStatus" name="occupationStatus">
             <option value="universityStud">University Student</option>
             <option value="schoolStudent">School Student</option>
             <option value="salariedWorker">Salaried Worker</option>
@@ -39,100 +117,95 @@
         <br><br>
         <!--Make this copy more clear-->
         <label for="organizationName">Affiliated Organizations:</label><br>
-        <input type="checkbox" id="university" name="organizations[]" value="university" required>
+        <input type="checkbox" id="university" name="organizations[]" value="university">
         <label for="university">University</label><br>
 
-        <input type="checkbox" id="government" name="organizations[]" value="government">
+        <input type="checkbox" id="government" name="organizations[]" value="Government">
         <label for="government">Government</label><br>
 
-        <input type="checkbox" id="company" name="organizations[]" value="company">
+        <input type="checkbox" id="company" name="organizations[]" value="Company">
         <label for="company">Company</label><br>
 
-        <input type="checkbox" id="private" name="organizations[]" value="private">
+        <input type="checkbox" id="private" name="organizations[]" value="Private">
         <label for="private">Private</label><br>
 
         <input type="checkbox" id="noneOrg" name="organizations[]" value="none">
-        <label for="noneOrg">N/A</label>
+        <label for="noneOrg">N/A</label><br>
         <br><br>
 
-        <label for="socialMediaUsage">Check this box if you use social media regularly: </label>
-        <input type="checkbox" id="socialMediaUsage" name="socialMediaUsage" required>
-        <br><br>
-
-        <label>What platforms do you use?</label><br>
-        <input type="checkbox" id="instagram" name="platforms[]" value="instagram" required>
+        <label>What Platforms do you Use?</label><br>
+        <input type="checkbox" id="instagram" name="platforms[]" value="instagram">
         <label for="instagram">Instagram</label><br>
 
-        <input type="checkbox" id="twitter" name="platforms[]" value="twitter">
+        <input type="checkbox" id="twitter" name="platforms[]" value="Twitter">
         <label for="twitter">Twitter</label><br>
 
-        <input type="checkbox" id="youtube" name="platforms[]" value="youtube">
+        <input type="checkbox" id="youtube" name="platforms[]" value="Youtube">
         <label for="youtube">Youtube</label><br>
 
-        <input type="checkbox" id="facebook" name="platforms[]" value="facebook">
+        <input type="checkbox" id="facebook" name="platforms[]" value="Facebook">
         <label for="facebook">Facebook</label><br>
 
-        <input type="checkbox" id="reddit" name="platforms[]" value="reddit">
+        <input type="checkbox" id="reddit" name="platforms[]" value="Reddit">
         <label for="reddit">Reddit</label><br>
 
-        <input type="checkbox" id="discord" name="platforms[]" value="discord">
+        <input type="checkbox" id="discord" name="platforms[]" value="Discord">
         <label for="discord">Discord</label><br>
 
-        <input type="checkbox" id="snapchat" name="platforms[]" value="snapchat">
+        <input type="checkbox" id="snapchat" name="platforms[]" value="Snapchat">
         <label for="snapchat">Snapchat</label><br>
 
-        <input type="checkbox" id="tiktok" name="platforms[]" value="tiktok">
+        <input type="checkbox" id="tiktok" name="platforms[]" value="TikTok">
         <label for="tiktok">TikTok</label><br>
 
-        <input type="checkbox" id="pinterest" name="platforms[]" value="pinterest">
+        <input type="checkbox" id="pinterest" name="platforms[]" value="Pinterest">
         <label for="pinterest">Pinterest</label><br>
-
-        <input type="checkbox" id="none" name="platforms[]" value="none">
-        <label for="none">None</label>
+        <br><br>
+        <label for="socialMediaUsage">Do you use Social Media?  (Y/N):</label>
+        <input type="checkbox" id="socialMediaUsage" name="socialMediaUsage">
+        <br><br>
             <br><br>
-            <!--Hold off on this-->
             <label for="avgDailyTime">What is the average time you spend on social media every day?</label>
-            <input type="number" id="avgDailyTime" name="avgDailyTime" required>
-            <br><br><br>
-            <h4>For the following questions, choose a number between 1-5 with 1 being "Strongly Disagree" and 5 being "Strongly Agree".</h4>
-            <br>
-            <label for="purpose">I find myself using social media without a specific purpose.</label>
-            <input type="number" id="purpose" name="purpose" required min="1" max="5">
+            <input type="number" id="avgDailyTime" name="avgDailyTime">
             <br><br>
-            <label for="distracted">I get distracted by social media when I am busy doing something.</label>
-            <input type="number" id="distracted" name="distracted" required min="1" max="5">
+            <label for="purpose">How often do you find yourself using Social media without a specific purpose?</label>
+            <input type="number" id="purpose" name="purpose">
             <br><br>
-            <label for="restless">I feel restless when I haven't used Social media in a while.</label>
-            <input type="number" id="restless" name="restless" required min="1" max="5">
+            <label for="distracted">How often do you get distracted by Social media when you are busy doing something?</label>
+            <input type="number" id="distracted" name="distracted">
             <br><br>
-            <label for="easilyDistracted">I am easily distracted.</label>
-            <input type="number" id="easilyDistracted" name="easilyDistracted" required min="1" max="5">
+            <label for="restless">Do you feel restless if you haven't used Social media in a while?</label>
+            <input type="number" id="restless" name="restless">
             <br><br>
-            <label for="worried">I am bothered by worries.</label>
-            <input type="number" id="worried" name="worried" required min="1" max="5">
+            <label for="easilyDistracted">On a scale of 1 to 5, how easily distracted are you?</label>
+            <input type="number" id="easilyDistracted" name="easilyDistracted">
             <br><br>
-            <label for="concentration">I find it difficult to concentrate on things.</label>
-            <input type="number" id="concentration" name="concentration" required min="1" max="5">
+            <label for="worried">On a scale of 1 to 5, how much are you bothered by worries?</label>
+            <input type="number" id="worried" name="worried">
             <br><br>
-            <label for="comparison">I compare myself to other successful people through the use of social media.</label>
-            <input type="number" id="comparison" name="comparison" required min="1" max="5">
+            <label for="concentration">Do you find it difficult to concentrate on things?</label>
+            <input type="number" id="concentration" name="concentration">
             <br><br>
-            <label for="comparisonFeelings">Following the previous statement, I feel strongly about these comparisons.</label>
-            <input type="number" id="comparisonFeelings" name="comparisonFeelings" required min="1" max="5">
+            <label for="comparison">On a scale of 1-5, how often do you compare yourself to other successful people through the use of social media?</label>
+            <input type="number" id="comparison" name="comparison">
             <br><br>
-            <label for="validation">I look to seek validation from features of social media.</label>
-            <input type="number" id="validation" name="validation" required min="1" max="5">
+            <label for="comparisonFeelings">Following the previous question, how do you feel about these comparisons, generally speaking?</label>
+            <input type="number" id="comparisonFeelings" name="comparisonFeelings">
             <br><br>
-            <label for="depression">I feel depressed or down.</label>
-            <input type="number" id="depression" name="depression" required min="1" max="5">
+            <label for="validation">How often do you look to seek validation from features of social media?</label>
+            <input type="number" id="validation" name="validation">
             <br><br>
-            <label for="interests">My interest in daily activites frequently fluctuates.</label>
-            <input type="number" id="interests" name="interests" required min="1" max="5">
+            <label for="depression">How often do you feel depressed or down?</label>
+            <input type="number" id="depression" name="depression">
             <br><br>
-            <label for="sleep">I face issues regarding sleep.</label>
-            <input type="number" id="sleep" name="sleep" required min="1" max="5">
+            <label for="interests">On a scale of 1 to 5, how frequently does your interest in daily activities fluctuate?</label>
+            <input type="number" id="interests" name="interests">
             <br><br>
-        <button type="submit">Submit</button>
+            <label for="sleep">On a scale of 1 to 5, how often do you face issues regarding sleep?</label>
+            <input type="number" id="sleep" name="sleep">
+            <br><br>
+        <button type="submit">Submit.</button>
     </form>
 </body>
+
 </html>
