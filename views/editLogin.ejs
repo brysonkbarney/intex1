@@ -16,7 +16,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,32 +41,32 @@
 </head>
 
 <body style="background-color: #1b2f45">
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-    
-          <a href="index.html" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="assets/img/provoLogo.png" alt="">
-            <!--<h1 class="d-flex align-items-center">Nova</h1>-->
-          </a>
-    
-          <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-          <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a href="/" class="active">Home</a></li>
-              <li><a href="/addData">Survey</a></li>
-              <li><a href="/dashboard">Insights</a></li>
-              <li><a href="/viewData">All Data</a></li>
-              <li><a href="/login">Account</a></li>
-            </ul>
-          </nav><!-- .navbar -->
-    
-        </div>
-      </header><!-- End Header -->
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/provoLogo.png" alt="">
+        <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/addData">Survey</a></li>
+          <li><a href="/dashboard">Insights</a></li>
+          <li><a href="/viewData">All Data</a></li>
+          <li><a href="/login">Account</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center">
 
       <h2>Edit Account</h2>
@@ -75,21 +77,24 @@
 
 
 
-    <!-- Verify Login Form -->
-    <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
-        <form action="/storeLogin" method="post" style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
-            <h2>Edit Account</h2>
-            <label for="login-username">Username:</label><br>
-            <input type="text" id="login-username" name="userName" required style="width: 100%; margin-bottom: 10px"; required><br>
+      <!-- Verify Login Form -->
+      <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
+        <form action="/editLogin" method="post"
+          style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
+          <h2>Edit Account</h2>
+          <label for="login-username">Username:</label><br>
+          <input type="text" id="login-username" name="username" value="<%= userinfo.username %>" required
+            style="width: 100%; margin-bottom: 10px" ; required><br>
 
-            <label for="login-password">Password:</label><br>
-            <input type="password" id="login-password" name="password" required style="width: 100%; margin-bottom: 10px;" required><br>
-            <br>
-            <button type="submit" style="width: 50%;">Create</button>
+          <label for="login-password">Password:</label><br>
+          <input type="password" id="login-password" name="password" value="<%= userinfo.password %>" required
+            style="width: 100%; margin-bottom: 10px;" required><br>
+          <br>
+          <button type="submit" style="width: 50%;">Create</button>
         </form>
-    </div>
-    
-    <br><br>
+      </div>
+
+      <br><br>
 </body>
-=======
+
 </html>
