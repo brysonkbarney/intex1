@@ -12,17 +12,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-// const session = require("express-session");
+const session = require("express-session");
 
-// // Configure express-session
-// app.use(
-//   session({
-//     secret: "provomediaimpact", // You should use a long, random string in production
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false }, // Set to true if using https
-//   })
-// );
+// Configure express-session
+app.use(
+  session({
+  secret: "provomediaimpact", // You should use a long, random string in production
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }, // Set to true if using https
+ })
+);
 
 const knex = require("knex")({
   client: "pg",
@@ -82,13 +82,15 @@ app.post("/findLogin", async (req, res) => {
       .first();
 
     if (user) {
+      req.session.userInfo = user;
       req.session.loggedIn = true;
       res.send(
         '<script>alert("Your login credentials were validated!"); window.location.href = "/"; </script>'
       );
     } else {
-      res.status(401).send("Invalid credentials");
-    }
+      res.send(
+        '<script>alert("Login Credentails Ivalid!"); window.location.href = "/login"; </script>'
+)}
   } catch (error) {
     console.error("Error details:", error);
     res.status(500).send("An error occurred during login.");
