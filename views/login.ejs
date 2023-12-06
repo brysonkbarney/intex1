@@ -88,8 +88,12 @@
             
             <button type="submit" style="width: 50%;">Login</button>
             <br><br>
-            <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a></p>
-            <p style="font-size: 10px;">*To create an account, you must be logged in with Admin or Personal credentials.</p>
+            <% if (isLoggedIn) { %>
+              <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a></p>
+          <% } else { %>
+              <p style="font-size: 14px;" class="disabled-link">Create Account (Login Required)</p>
+          <% } %>
+          <p style="font-size: 10px;">*To create an account, you must be logged in with Admin or Personal credentials.</p>
         </form>
     </div>
     

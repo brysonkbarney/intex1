@@ -1517,6 +1517,11 @@ section {
   color: #467ab3;
 }
 
+.disabled-link {
+  color: grey;
+  pointer-events: none;
+}
+
 .blog .posts-list .meta-top ul {
   display: flex;
   flex-wrap: wrap;

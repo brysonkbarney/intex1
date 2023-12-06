@@ -89,7 +89,7 @@ app.post("/findLogin", async (req, res) => {
       );
     } else {
       res.send(
-        '<script>alert("Login Credentails Ivalid!"); window.location.href = "/login"; </script>'
+        '<script>alert("Login Credentials Invalid!"); window.location.href = "/login"; </script>'
 )}
   } catch (error) {
     console.error("Error details:", error);
@@ -98,18 +98,12 @@ app.post("/findLogin", async (req, res) => {
 });
 
 //Get request for the login page
+//Get request for the login page
 app.get("/login", (req, res) => {
-  knex
-    .select()
-    .from("login")
-    .then((login) => {
-      res.render("login.ejs", { allLogins: login });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ err });
-    });
+  const isLoggedIn = req.session.loggedIn || false; // Check if user is logged in
+  res.render("login", { isLoggedIn: isLoggedIn }); // Pass the logged-in status to the EJS template
 });
+
 
 //Get Request for creating an account in our login page.
 //add account user name and password to our account table
