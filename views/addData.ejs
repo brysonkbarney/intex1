@@ -37,14 +37,16 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <style>
+<style>
     fieldset {
         border: 1px solid #ccc;
-        padding: 10px;
-        margin: 10px;
+        padding: 20px; /* Increased padding for better appearance */
         border-radius: 5px;
+        margin: auto; /* Center the fieldset horizontally */
+        max-width: 1000px; /* Set your desired width */
+        width: 100%;
     }
-  </style>
+</style>
 
 </head>
 
@@ -91,12 +93,12 @@
       </div>
     </div><!-- End Breadcrumbs -->
     <br>
+    <fieldset>
         <div class="section-header">
         <h2>Join the Provo Media Survey</h2>
             <p>Join Provo's effort to enhance mental health in our digital world. Your input in the Provo Media Survey offers key insights on social media's impact on our community. Help us create a supportive online space and manage the complexities of digital life. Click to contribute and support a healthier Provo.</p>
         </div>
-
-    <fieldset>
+      
       <form action="/storeData" method="POST">
           <label for="age">Age:</label>
           <input type="number" id="age" name="age" required min="12" max="99">
@@ -179,48 +181,54 @@
           <label for="none">None</label>
           <br><br>
 
-              <!--Leave this for now-->
               <label for="avgDailyTime">What is the average time you spend on social media every day?</label>
-              <input type="number" id="avgDailyTime" name="avgDailyTime">
+              <select id="avgDailyTime" name="avgDailyTime" required>
+                  <option value="Less than an Hour">Less than an Hour</option>
+                  <option value="Between 1 and 2 hours">Between 1 and 2 hours</option>
+                  <option value="Between 2 and 3 hours">Between 2 and 3 hours</option>
+                  <option value="Between 3 and 4 hours">Between 3 and 4 hours</option>
+                  <option value="Between 4 and 5 hours">Between 4 and 5 hours</option>
+                  <option value="More than 5 hours">More than 5 hours</option>
+              </select>
               <br><br><br><br>
 
               <h5>For the following statements, select a number between 1 - 5 with 1 being "Strongly Disagree" and 5 being "Strongly Agree".</h5><br>
 
-              <label for="purpose">I often use social media without a specific purpose.</label>
               <input type="number" id="purpose" name="purpose" required min="1" max="5">
+              <label for="purpose"> I often use social media without a specific purpose.</label>
               <br><br>
-              <label for="distracted">I get distracted by social media when I am busy doing something.</label>
               <input type="number" id="distracted" name="distracted" required min="1" max="5">
+              <label for="distracted"> I get distracted by social media when I am busy doing something.</label>
               <br><br>
-              <label for="restless">I feel restless when I haven't used social media in a while.</label>
               <input type="number" id="restless" name="restless" required min="1" max="5">
+              <label for="restless"> I feel restless when I haven't used social media in a while.</label>
               <br><br>
-              <label for="easilyDistracted">I am easily distracted.</label>
               <input type="number" id="easilyDistracted" name="easilyDistracted" required min="1" max="5">
+              <label for="easilyDistracted"> I am easily distracted.</label>
               <br><br>
-              <label for="worried">I am bothered by worries.</label>
               <input type="number" id="worried" name="worried" required min="1" max="5">
+              <label for="worried"> I am bothered by worries.</label>
               <br><br>
-              <label for="concentration">I find it difficult to concentrate on things.</label>
               <input type="number" id="concentration" name="concentration" required min="1" max="5">
+              <label for="concentration"> I find it difficult to concentrate on things.</label>
               <br><br>
-              <label for="comparison">I compare myself to other successful people through the use of social media.</label>
               <input type="number" id="comparison" name="comparison" required min="1" max="5">
+              <label for="comparison"> I compare myself to other successful people through the use of social media.</label>
               <br><br>
-              <label for="comparisonFeelings">Following the previous statement, I generally feel strongly about these comparisons.</label>
               <input type="number" id="comparisonFeelings" name="comparisonFeelings" required min="1" max="5">
+              <label for="comparisonFeelings"> Following the previous statement, I generally feel strongly about these comparisons.</label>
               <br><br>
-              <label for="validation">I often look to seek validation from features of social media.</label>
               <input type="number" id="validation" name="validation" required min="1" max="5">
+              <label for="validation"> I often look to seek validation from features of social media.</label>
               <br><br>
-              <label for="depression">I feel depressed or down.</label>
               <input type="number" id="depression" name="depression" required min="1" max="5">
+              <label for="depression"> I feel depressed or down.</label>
               <br><br>
-              <label for="interests">My interest in daily activities fluctuates frequently.</label>
               <input type="number" id="interests" name="interests" required min="1" max="5">
+              <label for="interests"> My interest in daily activities fluctuates frequently.</label>
               <br><br>
-              <label for="sleep">I face issues regarding sleep.</label>
               <input type="number" id="sleep" name="sleep" required min="1" max="5">
+              <label for="sleep"> I face issues regarding sleep.</label>
               <br><br>
           <br><button type="submit">Submit</button><br>
       </form>
