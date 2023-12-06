@@ -20,6 +20,7 @@ app.use(
     secret: "provo",
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: false },
   })
 );
 
