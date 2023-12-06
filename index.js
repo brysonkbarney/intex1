@@ -136,6 +136,7 @@ const platformMapping = {
   Instagram: 7,
   Snapchat: 8,
   TikTok: 9,
+  None: 10,
 };
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
