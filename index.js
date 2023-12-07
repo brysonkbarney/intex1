@@ -1,3 +1,6 @@
+//Bryson Barney, Caroline Tobler, Hannah Johnson, Jonah Allen
+// This Node.js application connects to an AWS database to collect survey data on the correlation between social media usage and mental health in Provo.
+
 // Importing necessary modules
 const express = require("express"); // Call the express module into the app
 let app = express(); // Server to listen, handle routes, and have middleware
