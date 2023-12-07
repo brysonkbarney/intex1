@@ -2,246 +2,255 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Provo Media Impact</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>Provo Media Impact</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="assets/img/circleNoBackground.png" rel="icon">
-    <link href="assets/img/circleNoBackground.png" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="assets/img/circleNoBackground.png" rel="icon">
+  <link href="assets/img/circleNoBackground.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Nova
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-    <style>
-        .table-container {
-            display: flex;
-            justify-content: center;
-            padding: 0px;
-            width: 100%;
-        }
+  <!-- =======================================================
+* Template Name: Nova
+* Updated: Sep 18 2023 with Bootstrap v5.3.2
+* Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+======================================================== -->
+<style>
+    .table-container {
+        display: flex;
+        justify-content: center;
+        padding: 0px;
+        width: 100%;
+    }
 
-        .scrollable-table {
-            overflow-x: auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            max-width: 97%;
-            /* Adjust this value as needed */
-        }
+    .filter-form-container {
+        max-width: 200px; /* Adjusts the maximum width */
+        margin: auto; /* Centers the form */
+        text-align: left; /* Aligns the form to the left or right */
+    }
+    
+    .small-select, .small-button {
+        font-size: 0.6rem; /* Smaller font size for select and buttons */
+        padding: 3px 8px; /* Smaller padding */
+    }
+    
+    .input-group {
+        flex-wrap: nowrap; /* Prevents elements from wrapping */
+    }
+    
+    .custom-button, .custom-button-outline {
+        padding: 3px 8px; /* Adjust the padding to make the button smaller */
+    }
 
-        #userTable {
-            width: 100%;
-            background-color: antiquewhite;
-        }
+    #userTableBody tr {
+        border-bottom: 2px solid white; /* Adds a light gray border under each row */
+    }
 
-        #userTable thead {
-            background-color: cornflowerblue;
-            color: white;
-        }
+    .scrollable-table {
+        overflow-x: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        max-width: 97%;
+        /* Adjust this value as needed */
+    }
 
-        #userTable th,
-        #userTable td {
-            text-align: left;
-            padding: 8px;
-        }
+    #userTable {
+        width: 100%;
+        background-color: ivory;
+    }
 
-        #userTable tbody {
-            font-family: Arial;
-            font-size: 9pt;
-        }
-    </style>
+    #userTable thead {
+        background-color: #1f98d1;
+        color: white;
+    }
+
+    #userTable th,
+    #userTable td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    #userTable tbody {
+        font-family: Arial;
+        font-size: 9pt;
+    }
+
+    .custom-button {
+        background-color:  #1f98d1; /* Custom background color */
+        color: white; /* Text color */
+        border-color:  #1b2f45; /* Border color */
+    }
+
+    .custom-button-outline {
+        background-color: transparent;
+        color:  #1f98d1; /* Text color */
+        border-color:  #1f98d1; /* Border color */
+    }
+
+</style>
 </head>
 
-<body style="background-color: #1b2f45">
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+<body class="page-about" style="background-color: #1b2f45">
 
-            <a href="/" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="assets/img/provoLogo.png" alt="">
-                <!--<h1 class="d-flex align-items-center">Nova</h1>-->
-            </a>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <a href="/" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/provoLogo.png" alt="">
+        <!--<h1 class="d-flex align-items-center">Nova</h1>-->
+      </a>
 
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a href="/" class="active">Home</a></li>
-                    <li><a href="/addData">Survey</a></li>
-                    <li><a href="/dashboard">Explore</a></li>
-                    <li><a href="/viewData">Records</a></li>
-                    <li><a href="/login">Account</a></li>
-                </ul>
-            </nav><!-- .navbar -->
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-        </div>
-    </header><!-- End Header -->
-    <!-- ======= Breadcrumbs ======= -->
-    <br><br>
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
-        <div class="container position-relative d-flex flex-column align-items-center">
-            <h2>View Survey Results</h2>
-            <ol>
-                <li><a href="/">Home</a></li>
-                <li>Survey Results</li>
-            </ol>
-        </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/addData">Survey</a></li>
+          <li><a href="/dashboard">Explore</a></li>
+          <li><a href="/viewData">Records</a></li>
+          <li><a href="/login">Account</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
     </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center">
+
+        <h2>View Records</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>All Records</li>
+        </ol>
+
+        
+
+      </div>
+    </div><!-- End Breadcrumbs -->
 
     <!-- Filter Form Section -->
-    <br>
-    <form action="/viewData" method="GET">
-        <select name="userId">
-            <option value="">Select User ID</option>
-            <% mydata.forEach(function(user) { %>
-                <option value="<%= user.userID %>">
-                    <%= user.userID %>
-                </option>
+<br>
+<div class="filter-form-container">
+    <form action="/viewData" method="GET" class="mb-3">
+        <div class="input-group">
+            <!-- User ID Dropdown -->
+            <select name="userId" class="form-select small-select">
+                <option value="">Select User ID</option>
+                <% mydata.forEach(function(user) { %>
+                    <option value="<%= user.userID %>"><%= user.userID %></option>
                 <% }); %>
-        </select>
-        <button type="submit">Filter</button>
+            </select>
+            <!-- Filter Button -->
+            <button type="submit" class="btn custom-button small-button shadow">Filter</button>
+        </div>
     </form>
+
+    <!-- View All Users Button -->
     <form action="/viewData" method="GET">
-        <button type="submit">View All Users</button>
+        <button type="submit" class="btn custom-button-outline small-button w-100">View All Records</button>
     </form>
+</div>
+<br>
 
     <!-- Data Table Section -->
     <div style="display: flex; justify-content: center; align-items: center;">
-        <form action="/viewData" method="GET"
-            style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
+        <form action="/viewData" method="GET" style="padding: 0px; background-color: white; border-radius: 10px; max-width: 1300px; width: 100%; box-sizing: border-box;">
             <div class="table-container">
                 <div class="scrollable-table">
                     <table id="userTable">
-                        <thead style="background-color: cornflowerblue;">
+                        <thead style="background-color: #1f98d1">
+                            <tr style="border-bottom: 2px solid white; text-align: center;">
+                                <!-- New Header Row -->
+                                <th colspan="10" style="border: 1px solid white;">General Information:</th>
+                                <th colspan="13" style="border: 1px solid white;">Ratings between 1-5 with 1 being "Strongly Disagree" and 5 being "Strongly Agree":</th>
+                            </tr>
                             <tr style="border-bottom: 2px solid white;">
                                 <!-- Column Headers -->
-                                <th>User ID</th>
-                                <th>Time</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Relationship Status</th>
-                                <th>Occupation Status</th>
-                                <th>Affiliated Organizations</th>
-                                <th>Social Media Usage</th>
-                                <th>Social Media Platforms</th>
-                                <th>Average Daily Time on Social Media</th>
-                                <th>Purpose</th>
-                                <th>Distracted</th>
-                                <th>Restless</th>
-                                <th>Easily Distracted</th>
-                                <th>Worried</th>
-                                <th>Concentration</th>
-                                <th>Comparison</th>
-                                <th>Comparison Feelings</th>
-                                <th>Validation</th>
-                                <th>Depression</th>
-                                <th>Interests</th>
-                                <th>Sleep</th>
-                                <th>Location</th>
+                                <th style="border: 1px solid white;">User ID</th>
+                                <th style="border: 1px solid white;">Time</th>
+                                <th style="border: 1px solid white;">Age</th>
+                                <th style="border: 1px solid white;">Gender</th>
+                                <th style="border: 1px solid white;">Relationship Status</th>
+                                <th style="border: 1px solid white;">Occupation Status</th>
+                                <th style="border: 1px solid white;">Affiliated Organizations</th>
+                                <th style="border: 1px solid white;">Social Media Usage</th>
+                                <th style="border: 1px solid white;">Social Media Platforms</th>
+                                <th style="border: 1px solid white;">Average Daily Time on Social Media</th>
+                                <th style="border: 1px solid white;">Purpose</th>
+                                <th style="border: 1px solid white;">Distracted</th>
+                                <th style="border: 1px solid white;">Restless</th>
+                                <th style="border: 1px solid white;">Easily Distracted</th>
+                                <th style="border: 1px solid white;">Worried</th>
+                                <th style="border: 1px solid white;">Concentration</th>
+                                <th style="border: 1px solid white;">Comparison</th>
+                                <th style="border: 1px solid white;">Comparison Feelings</th>
+                                <th style="border: 1px solid white;">Validation</th>
+                                <th style="border: 1px solid white;">Depression</th>
+                                <th style="border: 1px solid white;">Interests</th>
+                                <th style="border: 1px solid white;">Sleep</th>
+                                <th style="border: 1px solid white;">Location</th>
                             </tr>
                         </thead>
                         <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
                             <% for (let iCount=0; iCount < mydata.length; iCount++) { %>
                                 <tr>
                                     <!-- Data Rows -->
-                                    <td>
-                                        <%= mydata[iCount].userID %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].timestamp %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].age %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].gender %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].relationshipStatus %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].occupationStatus %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].organizationAffiliation %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].socialMediaUsage %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].socialMediaPlatforms %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].avgDailyTime %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].purpose %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].distracted %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].restless %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].easilyDistracted %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].worried %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].concentration %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].comparison %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].comparisonFeelings %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].validation %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].depression %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].interests %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].sleep %>
-                                    </td>
-                                    <td>
-                                        <%= mydata[iCount].location %>
-                                    </td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].userID %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].timestamp %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].age %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].gender %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].relationshipStatus %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].occupationStatus %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].organizationAffiliation %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaUsage %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].socialMediaPlatforms %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].avgDailyTime %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].purpose %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].distracted %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].restless %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].easilyDistracted %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].worried %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].concentration %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparison %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].comparisonFeelings %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].validation %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].depression %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].interests %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].sleep %></td>
+                                    <td style="text-align: center; font-weight: bold;"><%= mydata[iCount].location %></td>
                                 </tr>
-                                <% } %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -256,3 +265,4 @@
 </body>
 
 </html>
+
