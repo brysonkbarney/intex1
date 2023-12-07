@@ -56,7 +56,9 @@ app.post("/storeLogin", (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.send(
+        '<script>alert("Please choose another Username. Username already taken."); window.location.href = "/create"; </script>'
+      );
     });
 });
 
