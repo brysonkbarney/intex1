@@ -56,7 +56,9 @@ app.post("/storeLogin", (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.send(
+        '<script>alert("Username already exists. Please choose another one to continue!"); window.location.href = "/create"; </script>'
+      );
     });
 });
 
@@ -102,7 +104,6 @@ app.get("/login", (req, res) => {
   const isLoggedIn = req.session.loggedIn || false; // Check if user is logged in
   res.render("login", { isLoggedIn: isLoggedIn }); // Pass the logged-in status to the EJS template
 });
-
 
 // Get request for the add data page
 app.get("/addData", (req, res) => {
@@ -152,111 +153,117 @@ app.post("/editLogin", (req, res) => {
 });
 
 const organizationMapping = {
-  'University': 1,
-  'Government': 2,
-  'School': 3,
-  'Company': 4,
-  'Private': 5,
-  'None': 6 // Assuming 'none' or 'N/A' is represented in your form and maps to 6
+  University: 1,
+  Government: 2,
+  School: 3,
+  Company: 4,
+  Private: 5,
+  None: 6, // Assuming 'none' or 'N/A' is represented in your form and maps to 6
 };
 
 const platformMapping = {
-  'Twitter': 1,
-  'Youtube': 2,
-  'Facebook': 3,
-  'Reddit': 4,
-  'Discord': 5,
-  'Pinterest': 6,
-  'Instagram': 7,
-  'Snapchat': 8,
-  'TikTok': 9,
-  'None' : 10
+  Twitter: 1,
+  Youtube: 2,
+  Facebook: 3,
+  Reddit: 4,
+  Discord: 5,
+  Pinterest: 6,
+  Instagram: 7,
+  Snapchat: 8,
+  TikTok: 9,
+  None: 10,
 };
 //Get request for the add data survey page
 app.post("/storeData", async (req, res) => {
-  const { 
-      age, 
-      gender, 
-      relationshipStatus, 
-      occupationStatus, 
-      organizations, 
-      platforms, 
-      socialMediaUsage, 
-      avgDailyTime, 
-      purpose, 
-      distracted, 
-      restless, 
-      easilyDistracted, 
-      worried, 
-      concentration, 
-      comparison, 
-      comparisonFeelings, 
-      validation, 
-      depression, 
-      interests, 
-      sleep, 
-      location
+  const {
+    age,
+    gender,
+    relationshipStatus,
+    occupationStatus,
+    organizations,
+    platforms,
+    socialMediaUsage,
+    avgDailyTime,
+    purpose,
+    distracted,
+    restless,
+    easilyDistracted,
+    worried,
+    concentration,
+    comparison,
+    comparisonFeelings,
+    validation,
+    depression,
+    interests,
+    sleep,
+    location,
   } = req.body;
-  
+
   try {
-      await knex.transaction(async trx => {
-          const currentTimestamp = new Date();
-          const location = 'Provo'; // Set location to 'Provo'
-          const [userInsertResult] = await trx('user').insert({
-              timestamp: currentTimestamp, // Include this line
-              age,
-              gender,
-              relationshipStatus,
-              occupationStatus,
-              location,
-              socialMediaUsage, 
-              avgDailyTime, 
-              purpose, 
-              distracted, 
-              restless, 
-              easilyDistracted, 
-              worried, 
-              concentration, 
-              comparison, 
-              comparisonFeelings, 
-              validation, 
-              depression, 
-              interests, 
-              sleep
-          }).returning('userID');
+    await knex.transaction(async (trx) => {
+      const currentTimestamp = new Date();
+      const location = "Provo"; // Set location to 'Provo'
+      const [userInsertResult] = await trx("user")
+        .insert({
+          timestamp: currentTimestamp, // Include this line
+          age,
+          gender,
+          relationshipStatus,
+          occupationStatus,
+          location,
+          socialMediaUsage,
+          avgDailyTime,
+          purpose,
+          distracted,
+          restless,
+          easilyDistracted,
+          worried,
+          concentration,
+          comparison,
+          comparisonFeelings,
+          validation,
+          depression,
+          interests,
+          sleep,
+        })
+        .returning("userID");
 
-          const userId = userInsertResult.userID;
+      const userId = userInsertResult.userID;
 
-          // Inserting into user_organization
-          if (organizations) {
-              const userOrganizations = Array.isArray(organizations) ? organizations : [organizations];
-              const organizationInserts = userOrganizations.map(orgName => ({
-                  userID: userId,
-                  organizationNum: organizationMapping[orgName]
-              }));
-              await trx('user_organization').insert(organizationInserts);
-          }
+      // Inserting into user_organization
+      if (organizations) {
+        const userOrganizations = Array.isArray(organizations)
+          ? organizations
+          : [organizations];
+        const organizationInserts = userOrganizations.map((orgName) => ({
+          userID: userId,
+          organizationNum: organizationMapping[orgName],
+        }));
+        await trx("user_organization").insert(organizationInserts);
+      }
 
-          // Inserting into user_platform
-          if (platforms) {
-              const userPlatforms = Array.isArray(platforms) ? platforms : [platforms];
-              const platformInserts = userPlatforms.map(platformName => ({
-                  userID: userId,
-                  platformNum: platformMapping[platformName]
-              }));
-              await trx('user_platform').insert(platformInserts);
-          }
+      // Inserting into user_platform
+      if (platforms) {
+        const userPlatforms = Array.isArray(platforms)
+          ? platforms
+          : [platforms];
+        const platformInserts = userPlatforms.map((platformName) => ({
+          userID: userId,
+          platformNum: platformMapping[platformName],
+        }));
+        await trx("user_platform").insert(platformInserts);
+      }
 
-          await trx.commit();
-          res.send(
-            '<script>alert("Thank you for your response! Your record was added sucsessfully."); window.location.href = "/"; </script>'
-          );
-      });
+      await trx.commit();
+      res.send(
+        '<script>alert("Thank you for your response! Your record was added sucsessfully."); window.location.href = "/"; </script>'
+      );
+    });
   } catch (error) {
-      console.error("Error details:", error);
-      res.status(500).send("Failed to store data");
+    console.error("Error details:", error);
+    res.status(500).send("Failed to store data");
   }
-}); 
+});
 
 //Get request for the dashboard
 app.get("/dashboard", (req, res) => {
@@ -282,9 +289,13 @@ app.get("/viewData", (req, res) => {
       "gender",
       "relationshipStatus",
       "occupationStatus",
-      knex.raw('STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'),
+      knex.raw(
+        'STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'
+      ),
       "socialMediaUsage",
-      knex.raw('STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'),
+      knex.raw(
+        'STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'
+      ),
       "avgDailyTime",
       "purpose",
       "distracted",
@@ -330,7 +341,7 @@ app.get("/viewData", (req, res) => {
     );
 
   // Check if userId parameter is present
-  if (req.query.userId && req.query.userId.trim() !== '') {
+  if (req.query.userId && req.query.userId.trim() !== "") {
     query = query.where("u.userID", req.query.userId);
   }
 
@@ -344,8 +355,6 @@ app.get("/viewData", (req, res) => {
     });
 });
 
-
-
 //get request for a single record
 app.get("/searchData/:userNum", (req, res) => {
   knex
@@ -356,9 +365,13 @@ app.get("/searchData/:userNum", (req, res) => {
       "gender",
       "relationshipStatus",
       "occupationStatus",
-      knex.raw('STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'),
+      knex.raw(
+        'STRING_AGG(DISTINCT o."organizationName", \', \') AS "organizationAffiliation"'
+      ),
       "socialMediaUsage",
-      knex.raw('STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'),
+      knex.raw(
+        'STRING_AGG(DISTINCT pf."platformName", \', \') AS "socialMediaPlatforms"'
+      ),
       "avgDailyTime",
       "purpose",
       "distracted",
