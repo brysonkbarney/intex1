@@ -96,7 +96,7 @@
                     <li><a href="/" class="active">Home</a></li>
                     <li><a href="/addData">Survey</a></li>
                     <li><a href="/dashboard">Explore</a></li>
-                    <li><a href="/viewData">All Data</a></li>
+                    <li><a href="/viewData">Records</a></li>
                     <li><a href="/login">Account</a></li>
                 </ul>
             </nav><!-- .navbar -->
@@ -124,7 +124,7 @@
                 <option value="<%= user.userID %>">
                     <%= user.userID %>
                 </option>
-            <% }); %>
+                <% }); %>
         </select>
         <button type="submit">Filter</button>
     </form>
@@ -168,34 +168,80 @@
                             </tr>
                         </thead>
                         <tbody id="userTableBody" style="font-family: Arial; font-size: 9pt;">
-                            <% for (let iCount = 0; iCount < mydata.length; iCount++) { %>
+                            <% for (let iCount=0; iCount < mydata.length; iCount++) { %>
                                 <tr>
                                     <!-- Data Rows -->
-                                    <td><%= mydata[iCount].userID %></td>
-                                    <td><%= mydata[iCount].timestamp %></td>
-                                    <td><%= mydata[iCount].age %></td>
-                                    <td><%= mydata[iCount].gender %></td>
-                                    <td><%= mydata[iCount].relationshipStatus %></td>
-                                    <td><%= mydata[iCount].occupationStatus %></td>
-                                    <td><%= mydata[iCount].organizationAffiliation %></td>
-                                    <td><%= mydata[iCount].socialMediaUsage %></td>
-                                    <td><%= mydata[iCount].socialMediaPlatforms %></td>
-                                    <td><%= mydata[iCount].avgDailyTime %></td>
-                                    <td><%= mydata[iCount].purpose %></td>
-                                    <td><%= mydata[iCount].distracted %></td>
-                                    <td><%= mydata[iCount].restless %></td>
-                                    <td><%= mydata[iCount].easilyDistracted %></td>
-                                    <td><%= mydata[iCount].worried %></td>
-                                    <td><%= mydata[iCount].concentration %></td>
-                                    <td><%= mydata[iCount].comparison %></td>
-                                    <td><%= mydata[iCount].comparisonFeelings %></td>
-                                    <td><%= mydata[iCount].validation %></td>
-                                    <td><%= mydata[iCount].depression %></td>
-                                    <td><%= mydata[iCount].interests %></td>
-                                    <td><%= mydata[iCount].sleep %></td>
-                                    <td><%= mydata[iCount].location %></td>
+                                    <td>
+                                        <%= mydata[iCount].userID %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].timestamp %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].age %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].gender %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].relationshipStatus %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].occupationStatus %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].organizationAffiliation %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].socialMediaUsage %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].socialMediaPlatforms %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].avgDailyTime %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].purpose %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].distracted %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].restless %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].easilyDistracted %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].worried %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].concentration %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].comparison %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].comparisonFeelings %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].validation %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].depression %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].interests %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].sleep %>
+                                    </td>
+                                    <td>
+                                        <%= mydata[iCount].location %>
+                                    </td>
                                 </tr>
-                            <% } %>
+                                <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -208,4 +254,5 @@
         // JavaScript code can be added here if necessary
     </script>
 </body>
+
 </html>
