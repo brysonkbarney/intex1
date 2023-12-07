@@ -41,18 +41,23 @@
 </head>
 
 <body style="background-color: #1b2f45">
+
+    <!-- Header Section -->
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
+            <!-- Logo -->
             <a href="/" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <img src="assets/img/provoLogo.png" alt="">
                 <!--<h1 class="d-flex align-items-center">Nova</h1>-->
             </a>
 
+            <!-- Mobile Navigation Toggles -->
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
+            <!-- Navigation Menu -->
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a href="/" class="active">Home</a></li>
@@ -65,7 +70,8 @@
 
         </div>
     </header><!-- End Header -->
-    <!-- ======= Breadcrumbs ======= -->
+
+    <!-- Breadcrumbs Section -->
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
         <div class="container position-relative d-flex flex-column align-items-center">
 
@@ -74,8 +80,6 @@
                 <li><a href="/">Home</a></li>
                 <li>Account</li>
             </ol>
-
-
 
             <!-- Verify Login Form -->
             <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
@@ -93,14 +97,16 @@
                     <div style="display: flex; justify-content: center;">
                         <button type="submit"
                             style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
-
                     </div>
                     <br>
+
+                    <!-- Conditional Links based on Login Status -->
                     <% if (isLoggedIn) { %>
                         <p style="font-size: 14px;"><a href='/editLogin'>Click here to edit your account</a></p>
                         <% } else { %>
                             <p style="font-size: 14px;" class="disabled-link">Edit Account (Login Required)</p>
                             <% } %>
+
                                 <% if (isLoggedIn) { %>
                                     <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a>
                                     </p>
@@ -108,21 +114,22 @@
                                         <p style="font-size: 14px;" class="disabled-link">Create Account (Login
                                             Required)</p>
                                         <% } %>
+
+                                            <!-- Additional Information based on Login Status -->
                                             <% if (isLoggedIn) { %>
                                                 <p style="font-size: 10px; color: white;">*To create an account, you
                                                     must be logged in with
-                                                    Admin or
-                                                    Personal</p>
+                                                    Admin or Personal</p>
                                                 <% } else { %>
                                                     <p style="font-size: 10px; color: rgb(0, 0, 0);">*To create or edit
-                                                        an
-                                                        account, you
-                                                        must be logged in with
-                                                        Admin or
-                                                        Personal credentials.</p>
+                                                        an account, you must be
+                                                        logged in with Admin or Personal credentials.</p>
                                                     <% } %>
                 </form>
             </div>
+        </div>
+    </div>
 </body>
+
 
 </html>

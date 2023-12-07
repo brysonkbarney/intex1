@@ -40,19 +40,27 @@
   ======================================================== -->
 </head>
 
+<!-- Body of the HTML document with a background color -->
+
 <body style="background-color: #1b2f45">
+
+  <!-- Header section -->
   <header id="header" class="header d-flex align-items-center fixed-top">
+    <!-- Container for the header content -->
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
+      <!-- Logo and navigation links -->
       <a href="/" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="assets/img/provoLogo.png" alt="">
         <!--<h1 class="d-flex align-items-center">Nova</h1>-->
       </a>
 
+      <!-- Mobile navigation toggles -->
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
+      <!-- Navigation menu -->
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="/" class="active">Home</a></li>
@@ -65,32 +73,38 @@
 
     </div>
   </header><!-- End Header -->
-  <!-- ======= Breadcrumbs ======= -->
+
+  <!-- Breadcrumbs section with background image -->
   <div class="breadcrumbs d-flex align-items-center" style="background-image: url('assets/img/provo3.jpg');">
+    <!-- Container for breadcrumbs content -->
     <div class="container position-relative d-flex flex-column align-items-center">
 
+      <!-- Heading and breadcrumb links -->
       <h2>Edit Account</h2>
       <ol>
         <li><a href="/">Home</a></li>
         <li>Edit Account</li>
       </ol>
 
-
-
       <!-- Verify Login Form -->
+      <!-- Form for updating username and password -->
       <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
         <form action="/editLogin" method="post"
           style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
+          <!-- Form title -->
           <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Update your username and
             password below</p>
+          <!-- Username input -->
           <label for="login-username">Username:</label><br>
           <input type="text" id="login-username" name="username" value="<%= userinfo.username %>" required
             style="width: 100%; margin-bottom: 10px" ; required><br>
 
+          <!-- Password input -->
           <label for="login-password">Password:</label><br>
           <input type="password" id="login-password" name="password" value="<%= userinfo.password %>" required
             style="width: 100%; margin-bottom: 10px;" required><br>
           <br>
+          <!-- Update button -->
           <div style="display: flex; justify-content: center;">
             <button type="submit"
               style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Update</button>
@@ -99,7 +113,12 @@
         </form>
       </div>
 
+      <!-- Line breaks for spacing -->
       <br><br>
+    </div>
+  </div>
+
 </body>
+
 
 </html>
