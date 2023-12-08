@@ -85,50 +85,72 @@
             <div style="display: flex; justify-content: center; align-items: center; height: 60vh;">
                 <form action="/findLogin" method="post"
                     style="padding: 20px; background-color: white; border-radius: 10px; max-width: 400px; width: 100%; box-sizing: border-box;">
-                    <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Login</p>
-                    <label for="verify-username">Username:</label><br>
-                    <input type="text" id="verify-username" name="username" required
-                        style="width: 100%; margin-bottom: 10px;"><br>
 
-                    <label for="verify-password">Password:</label><br>
-                    <input type="password" id="verify-password" name="password" required
-                        style="width: 100%; margin-bottom: 10px;"><br>
-                    <br>
-                    <div style="display: flex; justify-content: center;">
-                        <button type="submit"
-                            style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
-                    </div>
-                    <br>
 
-                    <!-- Conditional Links based on Login Status -->
                     <% if (isLoggedIn) { %>
-                        <p style="font-size: 14px;"><a href='/editLogin'>Click here to edit your account</a></p>
+
+
+                        <p style="color: black; font-size: 20px; text-align: center;">Logged in as <%= userinfo.username
+                                %>
+                        </p>
+
+                        <!-- Conditional Logout Button and Links -->
+                        <div style="display: flex; justify-content: center;">
+                            <button type="button" onclick="logout()"
+                                style="width: 40%; padding: 8px; background-color: #ff6347; color: white; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
+                        </div>
+                        <br>
+
+                        <p style="font-size: 14px; text-align: center;"><a href='/editLogin'>Click here to edit your
+                                account</a></p>
+                        <p style="font-size: 14px; text-align: center;"><a href='/create'>Click here to create an
+                                account</a></p>
+                        <p style="font-size: 10px; color: white;">*To create an account, you must be logged in with
+                            Admin or Personal</p>
+
                         <% } else { %>
+                            <p style="color: black; font-size: 20px; font-weight: bold; text-align: center;">Login</p>
+                            <label for="verify-username">Username:</label><br>
+                            <input type="text" id="verify-username" name="username" required
+                                style="width: 100%; margin-bottom: 10px;"><br>
+
+                            <label for="verify-password">Password:</label><br>
+                            <input type="password" id="verify-password" name="password" required
+                                style="width: 100%; margin-bottom: 10px;"><br>
+                            <br>
+
+                            <div style="display: flex; justify-content: center;">
+                                <button type="submit"
+                                    style="width: 40%; padding: 8px; background-color: #56b8e6; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+                            </div>
+                            <br>
                             <p style="font-size: 14px;" class="disabled-link">Edit Account (Login Required)</p>
+                            <p style="font-size: 14px;" class="disabled-link">Create Account (Login Required)</p>
+                            <p style="font-size: 10px; color: rgb(0, 0, 0);">*To create or edit an account, you must be
+                                logged in with Admin or Personal credentials.</p>
+
                             <% } %>
-
-                                <% if (isLoggedIn) { %>
-                                    <p style="font-size: 14px;"><a href='/create'>Click here to create an account</a>
-                                    </p>
-                                    <% } else { %>
-                                        <p style="font-size: 14px;" class="disabled-link">Create Account (Login
-                                            Required)</p>
-                                        <% } %>
-
-                                            <!-- Additional Information based on Login Status -->
-                                            <% if (isLoggedIn) { %>
-                                                <p style="font-size: 10px; color: white;">*To create an account, you
-                                                    must be logged in with
-                                                    Admin or Personal</p>
-                                                <% } else { %>
-                                                    <p style="font-size: 10px; color: rgb(0, 0, 0);">*To create or edit
-                                                        an account, you must be
-                                                        logged in with Admin or Personal credentials.</p>
-                                                    <% } %>
                 </form>
             </div>
-        </div>
-    </div>
+
+
+            <script>
+                function logout() {
+                    // Make an AJAX request to update the server-side session
+                    fetch('/logout', { method: 'POST' })
+                        .then(response => {
+                            // Check if the logout was successful
+                            if (response.ok) {
+                                // Reload the page after logout
+                                window.location.reload();
+                            } else {
+                                // Handle the error (you can customize this part)
+                                console.error('Logout failed');
+                            }
+                        })
+                        .catch(error => console.error('Logout error:', error));
+                }
+            </script>
 </body>
 
 
