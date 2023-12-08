@@ -75,10 +75,6 @@ app.post("/findLogin", async (req, res) => {
   // Extracting data from the request body
   const { username, password } = req.body;
 
-  console.log("Received body:", req.body);
-  console.log("Extracted username:", username);
-  console.log("Extracted password:", password);
-
   try {
     // Searching for a user in the login table
     const user = await knex
@@ -114,8 +110,12 @@ app.post("/findLogin", async (req, res) => {
 app.get("/login", (req, res) => {
   // Checking if the user is logged in
   const isLoggedIn = req.session.loggedIn || false;
-  // Rendering the login page and passing the logged-in status to the EJS template
-  res.render("login", { isLoggedIn: isLoggedIn });
+
+  // Rendering the login page and passing the logged-in status and userinfo to the EJS template
+  res.render("login", {
+    isLoggedIn: isLoggedIn,
+    userinfo: req.session.userInfo,
+  });
 });
 
 // Handling GET request for the add data page
@@ -130,8 +130,6 @@ app.get("/create", (req, res) => {
 
 // Handling GET request for editing login information
 app.get("/editLogin", (req, res) => {
-  console.log("------Testing------");
-
   // Ensure req.session.userInfo is defined
   if (!req.session.userInfo) {
     // Redirect to the login page if userinfo is not defined
@@ -139,8 +137,6 @@ app.get("/editLogin", (req, res) => {
     return;
   }
 
-  console.log(req.session.userInfo.username);
-  console.log(req.session.userInfo.password);
   // Render the editLogin page and pass userinfo to the template
   res.render("editLogin", { userinfo: req.session.userInfo });
 });
@@ -168,6 +164,13 @@ app.post("/editLogin", (req, res) => {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
     });
+});
+
+// Handling POST request for logging out
+app.post("/logout", (req, res) => {
+  // Set the loggedIn session variable to false
+  req.session.loggedIn = false;
+  res.sendStatus(200); // Send a success status
 });
 
 // Mappings for organization and platform types
